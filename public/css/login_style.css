@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* design login page  */
+  body {
+    background-image: url(../image/loginimg.jpg);
+  
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-size: cover;
+    background-position: left;
+  }
+  .loginn {
+    position: relative;
+    background-color: white;
+    width: 90%;
+    height: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    top: 2.5%;
+    backdrop-filter: blur(21px) saturate(104%);
+    -webkit-backdrop-filter: blur(21px) saturate(104%);
+    background-color: rgba(255, 255, 255, 0.27);
+    border-radius: 12px;
+    border: 1px solid white;
+  
+    border-radius: 10px;
+  }
+  .transparent2 {
+    position: relative;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(42 38 38 / 21%);
+  }
+  /* design img inside page */
+  .container {
+    position: relative;
+    height: auto;
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    background-image: url(../image/loginimg.jpg);
+  }
+  
+  .container .transparent {
+    position: relative;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(42 38 38 / 19%);
+  }
+  .main-container {
+    margin-top: 20px;
+    float: right;
+    width: 40%;
+    height: 100%;
+  }
+  /* design text inside page */
+  .main-container h2 {
+    position: relative;
+    text-align: center;
+    font-size: 3em;
+    color: white;
+    font-family: "Reem Kufi", sans-serif;
+    margin-top: 10%;
+    /* text-shadow: 1px 1px 2px black; */
+  }
+  .main-container form {
+    margin-top: 10%;
+    margin-right: 9%;
+  }
+  .main-container form label {
+    font-size: 1.75em;
+    font-family: "Jomhuria", cursive;
+    font-family: "Reem Kufi", sans-serif;
+  }
+  .main-container form input {
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    width: 90%;
+    font-size: 1.25em;
+    border: 2px solid rgba(0, 0, 0, 0.541) !important;
+  }
+  .rememberbtn .remember {
+    width: auto;
+    cursor: pointer;
+  }
+  .rememberbtn label {
+    position: relative;
+    margin-top: 20px;
+    font-size: 1.25em !important;
+    margin-right: 0;
+  }
+  .main-container form .log {
+    text-align: center;
+  }
+  .log .login {
+    border: none;
+    background-color: #1b3d45;
+    color: white;
+    width: 70%;
+    height: auto;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 2.25em;
+    cursor: pointer;
+  }
+  .log .login:hover {
+    transform: scale(1.1);
+    transition: 0.2s;
+  }
+  .forget a {
+    color: #bfa267;
+    font-weight: 600;
+    padding: 8px;
+  }
+  
+  /* design if input wrong password or username */
+  
+  .wrongpassword h5 {
+    color: red;
+    font-size: 1.5em;
+  }

@@ -1,0 +1,36 @@
+.loginn {
+    display: flex !important;
+    flex-direction: column;
+  }
+  .container {
+    width: 100% !important;
+    height: 30% !important;
+    border-right: 2px solid white !important;
+  }
+  .main-container {
+    width: 100%;
+    margin-top: 5px !important;
+  
+    height: 90% !important;
+  }
+  .main-container h2 {
+    text-align: center;
+    position: relative;
+    text-align: center;
+    font-size: 2.25em !important;
+    margin-top: 1% !important;
+  }
+  .main-container form {
+    margin-top: 2% !important;
+    margin-right: 9%;
+  }
+  .main-container form .log .login {
+    padding-right: 10px !important;
+    width: 90% !important;
+    margin-bottom: 2% !important;
+  }
+  
+  .log .login:hover {
+    transform: scale(1) !important;
+    transition: 0.2s;
+  }

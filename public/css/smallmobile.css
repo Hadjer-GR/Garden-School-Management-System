@@ -1,0 +1,68 @@
+
+/* design etud-01 in mobile screen */
+
+/*
+*
+*
+*
+*/
+
+.homeetud {
+    position: relative;
+    width: 95vw !important;
+    height: 100vh;
+    height: 95vh !important;
+  }
+  
+  .homeetud .holder .holde1 {
+    padding: 5px 5px !important;
+  
+    font-size: 0.7em !important;
+    font-weight: 600 !important;
+  }
+  
+  /* deseign after enter Absences  */
+  /*
+  *
+  *
+  *
+  */
+  .contentabsences {
+    top: 25% !important;
+    width: 100% !important;
+  }
+  .contentabsences .cardeabsences h2 {
+    font-family: serif, sans-serif !important;
+    font-size: 0.8em !important;
+  }
+  
+  /* deseign the note page  */
+  /*
+  *
+  *
+  */
+  .home .contentnotes {
+    height: 85% !important;
+    margin-bottom: 5% !important;
+  }
+  .home .contentnotes .result .notes span::after {
+    height: 120px !important;
+  }
+  
+  /* design btn class page  */
+  .homeprofil .container .group ul li a {
+    font-size: 0.8em !important;
+  }
+  .homeprofil .container .group ul li a i {
+    font-size: 0.9em !important;
+  }
+  
+  /* design search button in listmatriel page  */
+  
+  .searchbar__button {
+    width: 20% !important;
+  }
+  .homelistmateriel .listmatriel {
+    margin-top: 2% !important;
+    width: 100% !important;
+  }
