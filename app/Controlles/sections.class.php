@@ -97,6 +97,9 @@ public function addclass(){
 
          $year_id=$_SESSION["id_year_scolaire"];
         
+         if($teacher_id ==0){
+          $teacher_id=3;
+         }
           
            $this->sectionModel->insert_class($class_n,$session_nbr,$price, $teacher_id, $year_id);
             $msg[0]="تمت اظافة القسم الدراسي بنجاح  شكرا" ;

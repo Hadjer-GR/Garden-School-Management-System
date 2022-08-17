@@ -113,7 +113,15 @@
       </span>
     <span> <?php echo $all_class[$i]->f_name.$all_class[$i]->l_name?>  </span></p>
     <br>
-  <button href="class_id= <?php echo $all_class[$i]->id ?>">
+  
+  <div class="class_btn">
+                         
+                     
+   <a href="" > <i class='bx bx-edit'></i></a>
+    <a href="" class="trash"><i class='bx bx-trash'></i></a>
+                  
+                    </div>
+                    <button href="class_id= <?php echo $all_class[$i]->id ?>">
     عرض
   </button>
     </div>
