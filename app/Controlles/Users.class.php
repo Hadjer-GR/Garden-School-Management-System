@@ -35,6 +35,7 @@ class Users extends Controllers{
        if($id_user != 0){
        
    // set id user en session 
+      
         $_SESSION["user_id"]=$id_user;
 
         $this->postView= $this->view("admin/home");

@@ -45,23 +45,38 @@
 
           <div class="text texthome">الاقسام</div>
       </div>
-      <?php if(isset($msg[0])){
+      <?php if(isset($msg[0]) && $msg[0]!="error"){
       
   
         ?>
             <script>  showBanner('.banner.success');</script> 
-            <?php  } ?>
+            <?php  } if(isset($msg[0]) && $msg[0]=="error"){?>
+
+              <script>    showBanner('.banner.error'); </script> 
+
+            <?php } ?>
                       
 <div class="banners-container" dir="ltr">
   <div class="banners" dir="ltr">
-   
+  <div class="banner error">
+      <div class="banner-message" dir="ltr">
+      <span class="banner-icon">
+      <i class='bx bx-error-circle' style="height:48px ; width:48px;"></i>
+      </span>
+      <?php if(isset($msg[0]) && $msg[0] =="error"){
+      
+      echo $msg[1]; }
+       ?>
+            </div>
+      <div class="banner-close" onclick="hideBanners()"><i class='bx bx-x'></i></div>
+    </div>
     <div class="banner success">
       <div class="banner-message" dir="ltr">
        <span class="banner-icon">
     <i class='bx bx-check'></i>
       </span>
       
-      <?php if(isset($msg[0])){
+      <?php if(isset($msg) && $msg[0] !="error"){
       
      echo $msg[0]; }
       ?>  </div>
@@ -71,19 +86,52 @@
   </div>
 </div>
 
-      <div class="contentbox">
+      <div class="contentbox" >
 
+
+
+      <!-- get all the class -->
+      
+      <?php 
+       
+      require_once "../app/Models/section.class.php";
+      
+      $postmodel=new section;
+
+      $all_class=$postmodel->get_all_class();
+
+   
+      for ($i=0; $i < sizeof($all_class); $i++) { 
+       
      
-    <div class="box box-down blue">
-      <h2>قسم تحضيري</h2>
+      
+      ?>
+ <div class="box box-down blue" dir="rtl">
+      <h2> <?php echo $all_class[$i]->n_class ?></h2>
       <p><span>
-        اسم الاستاذ
+     اسم الاستاذ (ة ):
       </span>
-    <span>غراب هاجر</span></p>
-  <button>
+    <span> <?php echo $all_class[$i]->f_name.$all_class[$i]->l_name?>  </span></p>
+    <br>
+  <button href="class_id= <?php echo $all_class[$i]->id ?>">
     عرض
   </button>
     </div>
+
+
+     <?php  }?>
+   
+
+  
+
+
+
+
+
+
+
+
+
     </div>
     <div class="addclass">
         <h2>اظافة قسم</h2>
@@ -97,13 +145,13 @@
                 
                 <div class="user-input1">
                     <label>اسم القسم </label>
-                   <input type="text" required name="class_n" placeholder="  اسم القسم  ">     
+                   <input type="text" required name="class_name" placeholder="  اسم القسم  ">     
                   </div>
                    
 
                   <div class="user-input4">
                     <label>عدد الحصص </label>
-                   <input type="number" required name="session_nbr"  min ="1" max="7" placeholder="    عدد الحصص في الاسبوع ">     
+                   <input type="number" required name="session_nbr"  min ="1" max="31" placeholder="    عدد الحصص في الشهر ">     
                   </div>
 
                  

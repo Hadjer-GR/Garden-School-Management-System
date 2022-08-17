@@ -17,18 +17,26 @@ class sections extends Controllers{
 
 
     public function index(){
-             // 1. verfie login 2. get page section.php
-       if(isset($_SESSION["user_id"])){
+
+    if(isset($_SESSION["user_id"])){
    
       // verfie period study if it is set or not 
      
       $id_year_scolaire=$this->sectionModel->get_study_year();
-      if(isset($id_year_scolaire) && $id_year_scolaire != "" ){
-        $_SESSION["id_year_scolaire"]= $id_year_scolaire ;
+    if(isset($id_year_scolaire) && $id_year_scolaire != 0 ){
+        $_SESSION['id_year_scolaire']= $id_year_scolaire ;
+
+      }
+      if(isset($_SESSION["complet"])){
+        $msg=$_SESSION["complet"];
+        $_SESSION["complet"]=null;
+        $this->postview=$this->view("admin/section","section",$msg);
+
+      }else{
+        $this->postview=$this->view("admin/section","section");
 
       }
       
-          $this->postview=$this->view("admin/section","section");
 
       }else{
     redirect("");
@@ -51,10 +59,9 @@ public function scolaire_y(){
           
          $value=$this->sectionModel->insert_scolaire_y($start_y,$end_y);
         $msg[0]="تمت اظافة العام الدراسي بنجاح  شكرا" ;
-        $_SESSION["complet"]=$msg[0];
         $id_year_scolaire=$this->sectionModel->get_study_year();
-        if(isset($id_year_scolaire) && $id_year_scolaire != "" ){
-          $_SESSION["id_year_scolaire"]= $id_year_scolaire ;
+        if(isset($id_year_scolaire) && $id_year_scolaire != 0){
+          $_SESSION['id_year_scolaire']= $id_year_scolaire ;
   
         }
         $this->postview=$this->view("admin/section","section",$msg);
@@ -71,38 +78,44 @@ public function scolaire_y(){
 public function addclass(){
 
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION["user_id"])) {
       
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
   
 // get the year scolaire 
-
+   if(isset($_SESSION['id_year_scolaire'] )){
+       $year_id= $_SESSION['id_year_scolaire'];
+  
 
 
 // add class 
-        $class_n=$_POST['class_n'];
-        $session_nbr=$_POST['session_nbr'];
-        $price=$_POST['price'];
-        $teacher_id=$_POST['teacher_class'];
 
+        $class_n=$_POST['class_name'];
+        $session_nbr=(int)$_POST['session_nbr'];
+        $price=$_POST['price'];
+        $teacher_id=(int)$_POST['teacher_class'];
+
+         $year_id=$_SESSION["id_year_scolaire"];
         
           
-           $this->sectionModel->insert_class($class_n,$session_nbr,$price, $teacher_id);
-           $_SESSION["complet"]="تمت اظافة القسم الدراسي بنجاح  شكرا" ;
-            redirect("section");
+           $this->sectionModel->insert_class($class_n,$session_nbr,$price, $teacher_id, $year_id);
+            $msg[0]="تمت اظافة القسم الدراسي بنجاح  شكرا" ;
 
+
+          }else{
+            $msg[0]="error";
+            $msg[1]=" يرجى من فضلك اولا اظافة العام الدراسي     &nbsp;  &nbsp;  بعد ذالك يمكنك اظافة القسم  ";
+          }
+          $_SESSION["complet"]=$msg;
+           redirect("sections");
+           
 
     }else{
 
-        redirect("section");
+        redirect("sections");
     }
 
 
-
-}
-
-
-
-
+  }
 
 }

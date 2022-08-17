@@ -2230,8 +2230,8 @@ form .submit input ,.box button{
   border-radius: 5px;
   box-shadow: 0px 30px 40px -20px var(--grayishBlue);
   padding: 30px;
-  margin:5px; 
-   width: auto;
+   margin: 5px;
+   min-width: 250px;
   max-height: 150px;
   background-color: var(--veryLightGray);
 }
@@ -2311,9 +2311,13 @@ h2 {
 
 .contentbox{
   position: relative;
-  height: 92vh;
-  display: flex;
+  height: 94vh;
+  width: 98%;
+  display: flex !important;
   flex-direction: row;
+  justify-content:flex-start;
+   align-content: flex-start;
+  flex-wrap: wrap;
   overflow-y: scroll;
   margin-left: 20px; 
 
