@@ -2190,7 +2190,8 @@ form .submit{
   text-align: center;
 }
 form .submit input,.box button{
-  height: 100%;
+  height: auto;
+  min-height: 50px;
   width: 100%;
   border-radius: 5px;
   border: none;

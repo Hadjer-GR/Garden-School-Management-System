@@ -45,12 +45,12 @@
 
           <div class="text texthome">الاقسام</div>
       </div>
-      <?php if(isset($data) && ($data=="insertyear" || $data="insertclass")){
-        
+      <?php if(isset($msg[0])){
       
+  
         ?>
             <script>  showBanner('.banner.success');</script> 
-            <?php } ?>
+            <?php  } ?>
                       
 <div class="banners-container" dir="ltr">
   <div class="banners" dir="ltr">
@@ -61,7 +61,10 @@
     <i class='bx bx-check'></i>
       </span>
       
-       تمت الاظافة بنجاح</div>
+      <?php if(isset($msg[0])){
+      
+     echo $msg[0]; }
+      ?>  </div>
       <div class="banner-close" onclick="hideBanners()"><i class='bx bx-x'></i></div>
     </div>
    
@@ -136,7 +139,15 @@
         
     </div>
     <br><br>
-    <div class="addclass">
+    <div class="addclass"     
+    <?php  if(isset( $_SESSION["id_year_scolaire"])) {
+      
+      ?>
+    
+    style="display:none;"
+    
+    <?php } ?>
+    >
         <h2>اظافة العام الدراسي</h2>
      <br>
      

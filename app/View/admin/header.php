@@ -65,7 +65,7 @@
                                 <span >
                                 <?php  
                         if(isset($data)){
-                            if($data =="student" || $data =="sections"){
+                            if($data =="student" || $data=="section"){
   
                         ?>
                            <style>
@@ -97,7 +97,7 @@
                         
                         <?php  
                         if(isset($data)){
-                            if($data =="sections"){
+                            if($data=="section"){
   
                         ?>
                             hover  

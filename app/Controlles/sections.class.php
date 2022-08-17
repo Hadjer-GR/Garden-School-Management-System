@@ -7,17 +7,45 @@ class sections extends Controllers{
     private $sectionModel;
 
 
-    public function __construct()
+
+     public function __construct()
     {
       $this->sectionModel=$this->model("section");
   
     }
 
-public function index(){
-// get page section.php
+
+    public function index(){
+             // 1. verfie login 2. get page section.php
+if(isset($_SESSION["user_id"])){
+   
+    // verfie period study if it is set or not 
+     
+      $id_year_scolaire=$this->sectionModel->get_study_year();
+      if(isset($id_year_scolaire) && $id_year_scolaire != 0){
+        $_SESSION["id_year_scolaire"]= $id_year_scolaire ;
+
+      }
+      if( isset($_SESSION["complet"])){
+
+        $msg[0]=$_SESSION["complet"];
+        $_SESSION["complet"]=null ;
+        $this->postview=$this->view("admin/section","section",$msg);
 
 
-$this->postview=$this->view("admin/section","sections");
+      }
+      else{
+        $this->postview=$this->view("admin/section","section");
+
+      }
+      
+
+
+}else{
+    redirect("");
+
+}
+
 
 }
 
@@ -25,7 +53,7 @@ $this->postview=$this->view("admin/section","sections");
 
 public function scolaire_y(){
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_SESSION["user_id"])) {
       
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
   
@@ -33,11 +61,13 @@ public function scolaire_y(){
         $end_y=$_POST['end_y'];
           
          $value=$this->sectionModel->insert_scolaire_y($start_y,$end_y);
-          $this->postview=$this->view("admin/section","insertyear");
+        $_SESSION["complet"]="تمت اظافة العام الدراسي بنجاح  شكرا" ;
+         redirect("sections");
+
 
     }else{
 
-        redirect("section");
+        redirect("");
     }
 }
 
@@ -50,7 +80,9 @@ public function addclass(){
       
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
   
-    
+// get the year scolaire 
+
+
 
 // add class 
         $class_n=$_POST['class_n'];
@@ -61,7 +93,7 @@ public function addclass(){
         
           
            $this->sectionModel->insert_class($class_n,$session_nbr,$price, $teacher_id);
-          $this->postview=$this->view("admin/section","insertclass");
+           $_SESSION["complet"]="تمت اظافة القسم الدراسي بنجاح  شكرا" ;
 
     }else{
 

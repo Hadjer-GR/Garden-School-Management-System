@@ -2,7 +2,7 @@
 // app link 
 
 define('APPROOT', dirname(dirname(__FILE__)));
-define('URLROOT', 'http://localhost/aoutef_project/');
+define('URLROOT', 'http://localhost/school_system/');
 
 
 
