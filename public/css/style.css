@@ -2191,7 +2191,7 @@ form .submit{
 }
 form .submit input,.box button{
   height: auto;
-  min-height: 50px;
+  min-height: 40px;
   width: 100%;
   border-radius: 5px;
   border: none;

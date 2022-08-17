@@ -5,6 +5,7 @@ class sections extends Controllers{
    
 
     private $sectionModel;
+    private $study_class;
 
 
 
@@ -17,31 +18,19 @@ class sections extends Controllers{
 
     public function index(){
              // 1. verfie login 2. get page section.php
-if(isset($_SESSION["user_id"])){
+       if(isset($_SESSION["user_id"])){
    
-    // verfie period study if it is set or not 
+      // verfie period study if it is set or not 
      
       $id_year_scolaire=$this->sectionModel->get_study_year();
-      if(isset($id_year_scolaire) ){
+      if(isset($id_year_scolaire) && $id_year_scolaire != "" ){
         $_SESSION["id_year_scolaire"]= $id_year_scolaire ;
 
       }
-      if( isset($_SESSION["complet"])){
-
-        $msg[0]=$_SESSION["complet"];
-        $_SESSION["complet"]=null ;
-        $this->postview=$this->view("admin/section","section",$msg);
-
-
-      }
-      else{
-        $this->postview=$this->view("admin/section","section");
-
-      }
       
+          $this->postview=$this->view("admin/section","section");
 
-
-}else{
+      }else{
     redirect("");
 
 }
@@ -61,8 +50,14 @@ public function scolaire_y(){
         $end_y=$_POST['end_y'];
           
          $value=$this->sectionModel->insert_scolaire_y($start_y,$end_y);
-        $_SESSION["complet"]="تمت اظافة العام الدراسي بنجاح  شكرا" ;
-         redirect("sections");
+        $msg[0]="تمت اظافة العام الدراسي بنجاح  شكرا" ;
+        $_SESSION["complet"]=$msg[0];
+        $id_year_scolaire=$this->sectionModel->get_study_year();
+        if(isset($id_year_scolaire) && $id_year_scolaire != "" ){
+          $_SESSION["id_year_scolaire"]= $id_year_scolaire ;
+  
+        }
+        $this->postview=$this->view("admin/section","section",$msg);
 
 
     }else{
@@ -94,6 +89,8 @@ public function addclass(){
           
            $this->sectionModel->insert_class($class_n,$session_nbr,$price, $teacher_id);
            $_SESSION["complet"]="تمت اظافة القسم الدراسي بنجاح  شكرا" ;
+            redirect("section");
+
 
     }else{
 

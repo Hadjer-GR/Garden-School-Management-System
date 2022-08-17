@@ -140,8 +140,7 @@
     </div>
     <br><br>
     <div class="addclass"     
-    <?php  if(isset( $_SESSION["id_year_scolaire"])) {
-      
+    <?php  if(isset( $_SESSION["id_year_scolaire"])  ) {
       ?>
     
     style="display:none;"
