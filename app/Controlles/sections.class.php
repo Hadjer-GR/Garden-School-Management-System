@@ -22,7 +22,7 @@ if(isset($_SESSION["user_id"])){
     // verfie period study if it is set or not 
      
       $id_year_scolaire=$this->sectionModel->get_study_year();
-      if(isset($id_year_scolaire) && $id_year_scolaire != 0){
+      if(isset($id_year_scolaire) ){
         $_SESSION["id_year_scolaire"]= $id_year_scolaire ;
 
       }
