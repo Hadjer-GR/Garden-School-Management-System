@@ -2498,7 +2498,9 @@ h2 {
 	
 }
 
-
+.class_btn{
+  text-align: left;
+}
 .class_btn a {
   text-decoration: none;
   padding: 15px 10px;
