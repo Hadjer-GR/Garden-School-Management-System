@@ -5,12 +5,11 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Amal</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="<?php echo URLROOT ;?>css/style.css">
         <link rel="icon" href="<?php echo URLROOT ;?>/image/icon3.png" type="image/icon png">
-
          <link rel="stylesheet" href="<?php echo URLROOT ;?>css/mobile.css" media="(max-width: 700px)">
          <script defer src="<?php echo URLROOT ;?>js/script.js"></script>
     <script defer src="<?php echo URLROOT ;?>js/mobilescreen.js"></script>
@@ -94,11 +93,15 @@
       
       <?php 
        
+       if($_SESSION['id_year_scolaire']){
+       $year_id= $_SESSION['id_year_scolaire'];
+
+  
       require_once "../app/Models/section.class.php";
       
       $postmodel=new section;
 
-      $all_class=$postmodel->get_all_class();
+      $all_class=$postmodel->get_all_class($year_id);
 
    
       for ($i=0; $i < sizeof($all_class); $i++) { 
@@ -127,7 +130,7 @@
     </div>
 
 
-     <?php  }?>
+     <?php } }?>
    
 
   
@@ -168,13 +171,35 @@
                     <label>المبلغ الشهري </label>
                    <input type="number" required name="price" step="0.001" placeholder="    المبلغ الشهري ">     
                   </div>
- 
+           
                 
                   <div class="user-input" placeholder="">
                     <label>الاستاذ    المسؤول</label>
                    <select name="teacher_class"> 
                     <option value="0"> ليس بعد</option>
-                    <option value="1">غراب هاجر  </option>
+
+
+                    <?php 
+ require_once "../app/Models/section.class.php";
+      
+ $postmodel=new section;
+
+ $teacher_class=$postmodel->get_teacher_class();
+
+
+ for ($i=0; $i < sizeof($teacher_class); $i++) { 
+  
+
+ 
+
+
+?>
+                    <option value="<?php echo $teacher_class[$i]->id ?>">  <?php echo $teacher_class[$i]->f_name.$teacher_class[$i]->l_name?>   </option>
+
+<?php  }?>
+
+
+
 
                     </select>     
                   </div>

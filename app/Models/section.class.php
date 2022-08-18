@@ -13,8 +13,12 @@ private $insert_class="insert into  database_aouetef.class (n_class,price,teache
 private $get_all_class="select database_aouetef.class.id,n_class,f_name,l_name 
 from database_aouetef.class
  left join database_aouetef.teacher
-on database_aouetef.class.teacher_id=database_aouetef.teacher.id;";
+on database_aouetef.class.teacher_id=database_aouetef.teacher.id where year_id=?;";
 
+//teacher class
+
+
+private $get_teachers='select id,f_name,l_name from database_aouetef.teacher where job=" (ة) استاذ" and  work ="yes" ;';
 
 
 
@@ -96,13 +100,30 @@ public function insert_class($class_n,$session_nbr,$price, $teacher_id,$year_id)
 
 
 
-public function get_all_class(){
+public function get_all_class($year_id){
 
   $this->db->preparedstmt($this->get_all_class);
+  $this->db->bind_Value(1,$year_id,null);
 
   $all_class=$this->db->fetchAll();
 
   return $all_class;
+
+  
+}
+
+/*
+* teacher class 
+*
+*/
+
+public function get_teacher_class(){
+
+  $this->db->preparedstmt($this->get_teachers);
+
+  $teacher_class=$this->db->fetchAll();
+
+  return $teacher_class;
 
   
 }

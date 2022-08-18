@@ -65,7 +65,7 @@
                                 <span >
                                 <?php  
                         if(isset($data)){
-                            if($data =="student" || $data=="section"){
+                            if($data =="student" || $data=="section" || $data=="teacher"){
   
                         ?>
                            <style>
@@ -142,7 +142,17 @@
 
 
                                 </a></li>
-                            <li class="nav-link"><a href="#">
+                            <li class="nav-link  <?php  
+                        if(isset($data)){
+                            if($data =="teacher"){
+  
+                        ?>
+                            hover  
+
+                            <?php
+                              }
+                        }
+                        ?>"><a href="<?php echo URLROOT ;?>Teachers">
                                     <span class="icon">
                                         <i class='bx bxs-user-account'></i>
                                     </span>
