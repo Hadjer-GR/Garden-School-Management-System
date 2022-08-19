@@ -100,10 +100,12 @@
 
 
 
+<br><br>
+  <div class="titleform">
 
-
-    <br>
-    <br>
+  <h2 class="addperson">تسجيل التلاميذ</h2>
+  </div>
+    
 
 
             <!-- fomullaire-->

@@ -92,8 +92,13 @@
    
   </div>
 </div>
- <br>
- <br>
+ 
+<br><br>
+  <div class="titleform">
+
+  <h2 class="addperson">تسجيل العمال</h2>
+  </div>
+    
 
 
 

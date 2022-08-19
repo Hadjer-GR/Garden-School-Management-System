@@ -339,6 +339,11 @@ body.dark .sidebar header .toggle {
   text-align: center;
   align-items: center;
 }
+.dropmenu ,
+.dropmenu_2{
+  background-color: #17191a0b;
+   border-radius: 10px;
+}
 .dropmenu,
 .dropmenu_2 {
   transform: all 150ms linear;
@@ -2102,7 +2107,7 @@ form .signup-link a:hover {
 */
 form {
   position: relative;
-  margin-top: 6%;
+  margin-top: 4%;
   max-width: 60vw;
   width: 100%;
   height: auto;
@@ -2506,13 +2511,20 @@ h2 {
   transition: 0.2s;
 }
 
+.titleform{
+  position: relative;
+  align-items: center;
+  text-align: center;
+}
 .addperson{
   text-align: center;
   color: black;
   background-color: aliceblue;
   display: inline-block;
   position: relative;
-  left: 45%;
+  display: inline-block;
+ font-weight: 600;
+ font-size: 1.3em;
   padding: 8px 15px;
   border-radius: 5px;
   min-width: 150px;
