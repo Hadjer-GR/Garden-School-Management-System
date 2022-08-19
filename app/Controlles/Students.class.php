@@ -30,14 +30,15 @@ class Students extends Controllers{
 
      
       if(isset($_SESSION["complet"])){
-        $msg=$_SESSION["complet"];
         $_SESSION["complet"]=null;
-        $this->postview=$this->view("admin/student","student",$msg);
-
-      }else{
-        $this->postview=$this->view("admin/student","student");
+        
 
       }
+
+
+        $this->postview=$this->view("admin/student","student");
+
+      
       
 
       }else{
@@ -76,7 +77,7 @@ class Students extends Controllers{
  //  Student proberties
  
          $f_name=$_POST['f_name'];
-         $l_name=(int)$_POST['l_name'];
+         $l_name=$_POST['l_name'];
          $date=$_POST['date_birth'];
          $class_id=(int)$_POST['student_class'];
          $parent_n=$_POST["parent_n"];
@@ -90,6 +91,7 @@ class Students extends Controllers{
         $parent_id=$this->studentModel->verfie_parent($parent_n,$parent_nbr);
 
       }
+
   //2. insert student  
   
   
@@ -99,6 +101,8 @@ class Students extends Controllers{
     $this->studentModel->insert_student($f_name,$l_name, $date,$parent_id,$year_id);
     $student_id=$this->studentModel->verfie_student($f_name,$l_name,$year_id);
 
+  }else{
+     redirect("students");
   }
 
 
@@ -106,15 +110,55 @@ class Students extends Controllers{
   $this->studentModel->insert_student_class($student_id,$class_id);
 
 
-        $msg[0]="تمت اظافة  التلميذ بنجاح  شكرا" ;
+//4. inscription  date 
  
+ $today_date=date("Y-m-d");
+
+
+//5. get class name 
+ $class_name =$this->studentModel->get_class_name($class_id,$year_id);
+
+
+  //6. generate QRCode 
+
+
+  require_once "../app/util/phpqrcode/qrlib.php";
+  require_once "../app/util/phpqrcode/qrconfig.php";
+
+       
+  $text=filter_var($student_id,FILTER_SANITIZE_STRING);
+  $filename= "card1.png";
+
+
+  $pngAbsoluteFilePath = APPROOT. '/../public/image/'. $filename;
+   $urlRelativeFilePath ="/public/". $filename;
+
+  
+ 
+  QRcode::png($student_id, $pngAbsoluteFilePath, 'L', 4, 2);
+
+
+
+
+
+
+
+
+
+
+        $msg[0]="تمت اظافة  التلميذ بنجاح  شكرا" ;
+
+
+        $studentt=[$f_name,$l_name,$class_name,$today_date];
+        $msg[1]=$studentt;
  
            }else{
              $msg[0]="error";
              $msg[1]=" يرجى من فضلك اولا اظافة العام الدراسي     &nbsp;  &nbsp;  بعد ذالك يمكنك اظافة تلميذ  ";
            }
-           $_SESSION["complet"]=$msg;
-            redirect("students");
+           
+          $this->postview=$this->view("admin/student","student",$msg);
+
             
  
      }else{
@@ -123,7 +167,7 @@ class Students extends Controllers{
      }
  
   
-     
+    
 
 
 
@@ -132,7 +176,7 @@ class Students extends Controllers{
 
 
 
-
+    
 
 
     

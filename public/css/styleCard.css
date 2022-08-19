@@ -1,0 +1,52 @@
+body{
+    --webkit-print-color-adjust:exact;
+    -webkit-print-color-adjust:exact;
+    background-color: white;
+
+  }
+*{
+margin: 0;
+box-sizing: border-box;
+
+}
+
+#studentcard{
+
+    height: 224px;
+    width: 336px; 
+    border:2px solid rgba(0, 0, 0, 0.3);
+    margin: 20px;
+    display: flex;
+    border-radius: 10px;
+    background-color: white !important;
+
+}
+.contentimg{
+    position: relative;
+    width: 40%;
+    height: 100%;
+    background-color: #96c0aa;
+
+}
+.contentimg .dd{
+    position: relative;
+    width: 60px;
+    height: 50px;
+    left: 30%;
+    margin-bottom: 5px;
+}
+.contentimg img{
+
+    position: relative;
+    width: 100px;
+    height: 140px;
+    left: 15px;
+    top: 5px;
+}
+.general{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    border-left: 1px solid rgba(0, 0, 0, 0.15);
+    /* border: 2px solid red; */
+}

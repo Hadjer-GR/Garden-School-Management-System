@@ -37,6 +37,11 @@ class Users extends Controllers{
    // set id user en session 
       
         $_SESSION["user_id"]=$id_user;
+        $id_year_scolaire=$this->Usermodel->get_study_year();
+    if(isset($id_year_scolaire) && $id_year_scolaire != 0 ){
+        $_SESSION['id_year_scolaire']= $id_year_scolaire ;
+
+      }
 
         $this->postView= $this->view("admin/home");
 

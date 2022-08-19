@@ -22,6 +22,7 @@ class Student {
     *  add class of this student
     */
     private $student_class="insert into database_aouetef.student_class (student_id,class_id)values(?,?);";
+    private $get_class_name="select n_class from database_aouetef.class where id=? and year_id=?;";
 
 
 
@@ -57,10 +58,12 @@ class Student {
       $this->db->bind_Value(1,$parent_nbr,null);
       $this->db->bind_Value(2,$parent_n,null);
       $parent_id=$this->db->fetch();
-      if(isset($parent_id) && $parent_id == ""){
-        $parent_id=0;
-      }
-      return $parent_id;
+      $id=0;
+   if(isset( $parent_id)&& $parent_id !=""){
+    $id=$parent_id->id;
+   }
+    return $id;
+  
 
     }
 
@@ -93,10 +96,11 @@ class Student {
       $this->db->bind_Value(2,$l_name,null);
       $this->db->bind_Value(3,$year_id,null);
       $student_id=$this->db->fetch();
-      if(isset($student_id) && $student_id == ""){
-        $student_id=0;
-      }
-      return $student_id;
+      $id=0;
+   if(isset( $student_id)&& $student_id !=""){
+    $id=$student_id->id;
+   }
+    return $id;
 
     }
 
@@ -118,6 +122,22 @@ class Student {
     }
 
 
+    /*
+    *
+    * get  class name 
+    */
+
+    public function get_class_name($class_id,$year_id){
+
+      $this->db->preparedstmt($this->get_class_name);
+     
+        $this->db->bind_Value(1,$class_id,null);
+        $this->db->bind_Value(2,$year_id,null);
+        $class_name=$this->db->fetch();
+        
+        return $class_name->n_class;
+      
+    }
     
 
 
