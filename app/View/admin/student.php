@@ -22,10 +22,13 @@
 
           <div class="text texthome">تسجيل</div>
       </div>
- 
+    <br>
+    <br>
+
+
             <!-- fomullaire-->
           <div class="student">
-            <form action="<?php echo URLROOT ;?>Students/insert" method="post" dir="rtl">
+            <form action="<?php echo URLROOT ;?>Students/add" method="post" dir="rtl">
                   <div class="contentstudent">
 
                 
@@ -42,7 +45,7 @@
 
                   <div class="user-input3">
                     <label>تاريخ الازدياد</label>
-                   <input type="text" required name="date_birth" placeholder="   تاريخ ازدياد التلميذ ">     
+                   <input type="date" required name="date_birth" placeholder="   تاريخ ازدياد التلميذ ">     
                   </div>
 
 
@@ -53,7 +56,7 @@
                   
                   <div class="user-input4">
                     <label>رقم الهاتف</label>
-                   <input type="text" required name="numero" placeholder="  رقم هاتف الولي ">     
+                   <input type="number" required name="parent_nbr" placeholder="  رقم هاتف الولي ">     
                   </div>
  
                   <!--
@@ -75,9 +78,33 @@
                  
                   <div class="user-input" placeholder="">
                     <label>القسم   </label>
-                   <select name="class"> 
-                    <option>class 1</option>
-                    <option>class 2</option>
+                   <select name="student_class"> 
+                   
+
+                   <?php 
+       
+       if($_SESSION['id_year_scolaire']){
+       $year_id= $_SESSION['id_year_scolaire'];
+
+  
+      require_once "../app/Models/section.class.php";
+      
+      $postmodel=new section;
+
+      $all_class=$postmodel->get_all_class($year_id);
+
+   
+      for ($i=0; $i < sizeof($all_class); $i++) { 
+       
+     
+      
+      ?>
+
+                    <option value="<?php echo $all_class[$i]->id ?>"> <?php echo $all_class[$i]->n_class ?></option>
+
+                    <?php } }?>
+
+
 
                     </select>     
                   </div>
