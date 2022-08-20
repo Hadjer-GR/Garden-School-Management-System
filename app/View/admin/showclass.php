@@ -44,6 +44,67 @@
 
         </div>
 
+
+        <br>
+        <br>
+
+        <!-- List student -->
+      <div class="contentclass">
+
+       <div class="infoclass"  dir="rtl">
+       <div class="info">
+        <div class="icon"><i class='bx bxl-paypal money'></i></div>
+       
+        <div>15000000 <span>DA</span></div>
+       </div>
+       <div class="info">
+       <div class="icon"><i class='bx bx-group people'></i></div>
+       <div>    20 <span>تلميذ (ة)</span></div>
+
+       </div>
+       <div class="info">
+      
+       <div class="icon"><i class='bx bx-pin notpay'></i></div>
+       <div>    8 <span> لم يدفع بعد</span></div>
+       </div>
+
+
+
+
+       </div>
+
+        <div class="listmatriel" dir="rtl">
+            <table >
+                <thead>
+                    <tr>
+                        <th>التلميذ (ة) :</th>
+                        <th>مستحقات الشهر   : </th>
+                        <th>  عدد الحضور</th>
+                        <th>&nbsp;</th>
+                        <th>الغاء الاشتراك : </th>
+                       
+
+                    </tr>
+                </thead>
+                <tbody dir="rtl">
+                
+                
+             
+                        <tr>
+                        <td><c:out value="" />غراب رانيا</td>
+                        <td><c:out value="" /><span> </span> <span></span></td>
+                        <td><c:out value="" />5</td>
+                        <td>&nbsp; </td>
+                        <td class="btndelete">    <a href="" class=" trash"><i class='bx bx-trash'></i></a></td>
+                      
+
+                    </tr>
+               
+                    
+                </tbody>
+            </table>
+        </div>
+        </div>
 </section>
 
 </body>

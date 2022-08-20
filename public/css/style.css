@@ -2502,13 +2502,13 @@ h2 {
   font-weight: 600;
   font-size: 1.2em;
 }
-.class_btn a.trash {
+.class_btn a.trash,.listmatriel .btndelete  a.trash{
   color: red;
 }
-.class_btn a i {
+.class_btn a i ,.listmatriel .btndelete  a i{
   font-size: 1em;
 }
-.class_btn a i:hover {
+.class_btn a i:hover ,.btndelete  a i:hover{
   transform: scale(1.2);
   transition: 0.2s;
 }
@@ -2531,3 +2531,130 @@ h2 {
   border-radius: 5px;
   min-width: 150px;
 }
+
+
+/* design page list student  */
+/*
+*
+*
+*
+*
+*
+*/
+.contentclass{
+  position: relative;
+  height: 100%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.infoclass{
+  position: relative;
+  width: 80%;
+  height: auto;
+  float: none;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.infoclass .info {
+  width: 20%;
+  height: 100px;
+  padding: 10px 15px;
+  font-size: 1.1em;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2), -2px -2px 8px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff !important;  
+}
+.infoclass .info {
+  margin-bottom: 5px;
+  
+}
+.infoclass .info .icon i{
+font-size: 1.1em;
+  padding: 8px 5px ;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}.infoclass .info .icon .notpay{
+  background-color: var(--primary-color);
+}
+.infoclass .info .icon .money{
+  background-color: #009879;
+}
+.infoclass .info .icon .people{
+  background-color: #8d8fe6;
+}
+.listmatriel {
+  position: relative;
+  height: 100%;
+  width: 95%;
+  height: 100%;
+  float: none;
+  margin-top: 15px;
+
+  overflow-y: hidden;
+}
+
+.listmatriel table {
+  border-collapse: collapse;
+  box-shadow: 0 5px 10px #e1e5ee;
+  background-color: white;
+  text-align: left;
+  width: 100%;
+  height: auto;  
+  border-top: 2px solid rgba(0, 0, 0, 0.12);
+
+  font-size: 1.2em;
+}
+table thead {
+  box-shadow: 0 5px 10px #e1e5ee;
+}
+table th,
+table td {
+  padding: 12px 15px;
+  cursor: pointer;
+}
+table td.edite,
+table td.delete {
+  font-size: 1.4em;
+}
+table td.delete a {
+  color: rgb(212, 55, 55) !important;
+}
+table td.edite:hover,
+table td.delete:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+table a {
+  text-decoration: none;
+  color: #2962ff;
+}
+table .status {
+  border-radius: 0.2rem;
+  background-color: red;
+  padding: 0.2rem 1rem;
+  text-align: center;
+}
+table .status-pending {
+  background-color: #fff0c2;
+  color: #a68b00;
+}
+table .status-paid {
+  background-color: #c8e6c9;
+  color: #388e3c;
+}
+table .status-unpaid {
+  background-color: #ffcdd2;
+  color: #c62828;
+}
+table .amount {
+  text-align: right;
+}
+table tr:nth-child(even) {
+  background-color: #f4f6fb;
+}
+

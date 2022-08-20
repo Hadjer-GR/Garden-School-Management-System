@@ -611,3 +611,35 @@
   
 }
 
+/*
+*
+* list student 
+*
+*/
+
+.contentclass{
+  
+  width: 100% !important;
+
+}
+.infoclass{
+  position: relative;
+  width: 100% !important;
+ 
+}
+.infoclass .info{
+  width: 40% !important;
+  height: 100px;
+  padding: 10px 15px;
+  font-size: 0.9em !important;
+}
+
+.listmatriel {
+  position: relative;
+  height: 100% !important;
+  width: 100% !important;
+  min-height: 500px;
+  float: none !important;
+  
+  overflow-y: hidden;
+}
