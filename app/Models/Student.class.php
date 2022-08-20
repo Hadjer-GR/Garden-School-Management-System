@@ -24,7 +24,11 @@ class Student {
     private $student_class="insert into database_aouetef.student_class (student_id,class_id)values(?,?);";
     private $get_class_name="select n_class from database_aouetef.class where id=? and year_id=?;";
 
-
+/*
+* student moth it mean pay
+*
+*/
+private $student_pay="insert into database_aouetef.student_month(month_n,year_nbr,class_id,student_id,year_id)values(?,?,?,?,?);";
 
 
   public function __construct()
@@ -137,6 +141,27 @@ class Student {
         
         return $class_name->n_class;
       
+    }
+
+
+    
+    /*
+    * 
+    * insert student pay this month
+    *
+    */
+
+    public function student_pay($month_n,$year_nbr,$class_id,$student_id,$year_id){
+
+      $this->db->preparedstmt($this->student_pay);
+      $this->db->bind_Value(1,$month_n,null);
+      $this->db->bind_Value(2,$year_nbr,null);
+      $this->db->bind_Value(3,$class_id,null);
+      $this->db->bind_Value(4,$student_id,null);
+      $this->db->bind_Value(5,$year_id,null);
+
+      $this->db->executeQuery();
+
     }
     
 

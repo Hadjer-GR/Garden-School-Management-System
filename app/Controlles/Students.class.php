@@ -23,8 +23,7 @@ class Students extends Controllers{
 
 
   public function index(){
-    
-     $this->postView=$this->view("admin/student","student");
+
 
      if(isset($_SESSION["user_id"])){
 
@@ -118,8 +117,12 @@ class Students extends Controllers{
 //5. get class name 
  $class_name =$this->studentModel->get_class_name($class_id,$year_id);
 
+// 6. insert student pay this month
+$month_n=date("m");
+$year_nbr=date("Y");
+$this->studentModel->student_pay($month_n,$year_nbr,$class_id,$student_id,$year_id);
 
-  //6. generate QRCode 
+  //7. generate QRCode 
 
 
   require_once "../app/util/phpqrcode/qrlib.php";

@@ -124,9 +124,9 @@
     <a href="" class="trash"><i class='bx bx-trash'></i></a>
                   
                     </div>
-                    <button href="class_id= <?php echo $all_class[$i]->id ?>">
+  <a  class="viewclass" href="<?php echo URLROOT ;?>Showclasses?class_id= <?php echo $all_class[$i]->id ?>">
     عرض
-  </button>
+  </a>
     </div>
 
 
