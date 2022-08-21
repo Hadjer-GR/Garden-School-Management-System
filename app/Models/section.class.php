@@ -4,21 +4,21 @@ class Section {
 
 // scolaire study 
 
-private $insert_year_scolaire="insert into database_aouetef.yearscolaire (start_y,end_y)values(?,?);";
-private $get_study_year="select id  from database_aouetef.yearscolaire where  start_y <= ? and end_y > ?;
+private $insert_year_scolaire="insert into ".DB_NAME.".yearscolaire (start_y,end_y)values(?,?);";
+private $get_study_year="select id  from ".DB_NAME.".yearscolaire where  start_y <= ? and end_y > ?;
 ";
 
 // add class 
-private $insert_class="insert into  database_aouetef.class (n_class,price,teacher_id,year_id,nbr_session)values(?,?,?,?,?);";
-private $get_all_class="select database_aouetef.class.id,n_class,f_name,l_name 
-from database_aouetef.class
- left join database_aouetef.teacher
-on database_aouetef.class.teacher_id=database_aouetef.teacher.id where year_id=?;";
+private $insert_class="insert into  ".DB_NAME.".class (n_class,price,teacher_id,year_id,nbr_session)values(?,?,?,?,?);";
+private $get_all_class="select ".DB_NAME.".class.id,n_class,f_name,l_name 
+from ".DB_NAME.".class
+ left join ".DB_NAME.".teacher
+on ".DB_NAME.".class.teacher_id=".DB_NAME.".teacher.id where year_id=?;";
 
 //teacher class
 
 
-private $get_teachers='select id,f_name,l_name from database_aouetef.teacher where job=" (ة) استاذ" and  work ="yes" ;';
+private $get_teachers='select id,f_name,l_name from '.DB_NAME.'.teacher where job=" (ة) استاذ" and  work ="yes" ;';
 
 
 

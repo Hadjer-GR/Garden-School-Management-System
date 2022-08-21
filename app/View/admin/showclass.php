@@ -31,13 +31,13 @@
             </a>
 
 
-            <?php if(isset($msg)){
+            <?php if(isset($msg[0])){
       
   
       ?>
 
             <span>
-            <?php echo $msg; ?>
+            <?php echo $msg[0]; ?>
             </span>
 
    <?php }?>
@@ -55,33 +55,42 @@
        <div class="info">
         <div class="icon"><i class='bx bxl-paypal money'></i></div>
        
-        <div>15000000 <span>DA</span></div>
+        <div> <?php if(isset($msg[1])){
+        echo$msg[1];
+       }
+      ?><span>DA</span> </div>
        </div>
        <div class="info">
        <div class="icon"><i class='bx bx-group people'></i></div>
-       <div>    20 <span>تلميذ (ة)</span></div>
+       <div>     <?php if(isset($msg[2])){
+        echo$msg[2];
+       }
+      ?><span>تلميذ (ة)</span></div>
 
        </div>
        <div class="info">
       
        <div class="icon"><i class='bx bx-pin notpay'></i></div>
-       <div>    8 <span> لم يدفع بعد</span></div>
+       <div>    <?php if(isset($msg[3])){
+        echo$msg[3];
+       }
+      ?> <span> لم يدفع بعد</span></div>
        </div>
 
 
 
 
        </div>
-
+    <!-- list Student -->
         <div class="listmatriel" dir="rtl">
             <table >
                 <thead>
                     <tr>
-                        <th>التلميذ (ة) :</th>
-                        <th>مستحقات الشهر   : </th>
-                        <th>  عدد الحضور</th>
+                        <th>التلميذ (ة) </th>
+                        <th> الاشتراك    </th>
+                        <th>   الحضور </th>
                         <th>&nbsp;</th>
-                        <th>الغاء الاشتراك : </th>
+                        <th>الغاء الاشتراك  </th>
                        
 
                     </tr>

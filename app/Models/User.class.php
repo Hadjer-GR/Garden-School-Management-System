@@ -11,7 +11,7 @@ class User
    private $authentication = "SELECT id FROM `user` WHERE username=? and password=?;";
   // scolaire study 
 
-private $get_study_year="select id  from database_aouetef.yearscolaire where  start_y <= ? and end_y > ?;
+private $get_study_year="select id  from ".DB_NAME.".yearscolaire where  start_y <= ? and end_y > ?;
 ";
 
 

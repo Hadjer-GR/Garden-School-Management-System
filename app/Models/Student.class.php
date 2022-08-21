@@ -6,29 +6,29 @@ class Student {
   * student 
   */
 
-    private $insert_student="insert into database_aouetef.student (f_name,l_name,date_birth,parent_id,year_id)values(?,?,?,?,?);";
-    private $verfie_student="select id from database_aouetef.student where f_name=? and l_name=? and year_id=?;
+    private $insert_student="insert into ".DB_NAME.".student (f_name,l_name,date_birth,parent_id,year_id)values(?,?,?,?,?);";
+    private $verfie_student="select id from ".DB_NAME.".student where f_name=? and l_name=? and year_id=?;
     ";
 
     /*
     *  parent 
     */
-    private $insert_parent="insert into database_aouetef.parent_student (numero,n_parent)values(?,?);";
-    private $verfie_parent="select id from database_aouetef.parent_student where numero=? and n_parent=?;";
+    private $insert_parent="insert into ".DB_NAME.".parent_student (numero,n_parent)values(?,?);";
+    private $verfie_parent="select id from ".DB_NAME.".parent_student where numero=? and n_parent=?;";
 
    
     /*
     *
     *  add class of this student
     */
-    private $student_class="insert into database_aouetef.student_class (student_id,class_id)values(?,?);";
-    private $get_class_name="select n_class from database_aouetef.class where id=? and year_id=?;";
+    private $student_class="insert into ".DB_NAME.".student_class (student_id,class_id)values(?,?);";
+    private $get_class_name="select n_class from ".DB_NAME.".class where id=? and year_id=?;";
 
 /*
 * student moth it mean pay
 *
 */
-private $student_pay="insert into database_aouetef.student_month(month_n,year_nbr,class_id,student_id,year_id)values(?,?,?,?,?);";
+private $student_pay="insert into ".DB_NAME.".student_month(month_n,year_nbr,class_id,student_id,year_id)values(?,?,?,?,?);";
 
 
   public function __construct()

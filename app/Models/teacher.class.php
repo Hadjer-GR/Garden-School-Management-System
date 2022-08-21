@@ -4,7 +4,7 @@ class Teacher {
 
 // teacher 
 
-private $insert_teacher="insert into database_aouetef.teacher (f_name,l_name,price,nbr,job,work)values (?,?,?,?,?,?);";
+private $insert_teacher="insert into ".DB_NAME.".teacher (f_name,l_name,price,nbr,job,work)values (?,?,?,?,?,?);";
 
 
 

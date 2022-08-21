@@ -77,6 +77,13 @@ public function fetch(){
   return $result;
 
 }
+// fetch data that have one row  in type number
+public function nbrfetch(){
+  $this->stmt->execute();
+$result= $this->stmt->fetch(PDO::FETCH_BOTH);
+return $result;
+
+}
 
 // row count 
 
