@@ -57,7 +57,7 @@ class Showclasses extends Controllers{
           
 
             }
-             $this->postview=$this->view("admin/showclass","section",$msg);
+           $this->postview=$this->view("admin/showclass","section",$msg);
       
             
             

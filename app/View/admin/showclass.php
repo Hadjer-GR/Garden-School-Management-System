@@ -23,7 +23,7 @@
           <div class="text texthome">الاقسام</div>
       </div>
       
-
+         
 
 
         <div class="titlenote">
@@ -109,11 +109,11 @@
        
       $student=$postmodel->get_student($class_id,$year_id);
       $student_month=$postmodel->get_student_month($class_id,$month_nbr,$year_id);
-
+     
     
       for ($i=0; $i < sizeof($student); $i++) { 
-       
-     
+        $k=0;
+        
       
       ?>
            
@@ -122,15 +122,15 @@
 
      <?php for ($j=0; $j < sizeof($student_month); $j++) { 
         if($student_month[$j]->student_id == $student[$i]->id){
-            
+             $k=1;
             ?>
 
         <td><c:out value="" /><a style="color: green;"><i class='bx bxs-user-check' ></i> </a> <span></span></td>
-    <?php } else{?>
+    <?php }} if($k==0){?>
         <td><c:out value="" /><a style="color: red;"><i class='bx bxs-user-x' ></i></a></td>
 
 
-<?php }}?>
+<?php }?>
 
 
         <td><c:out value="" />5</td>

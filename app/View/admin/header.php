@@ -168,9 +168,19 @@
                     </div>
 
 
-                    <li class="nav-link">
+                    <li class="nav-link  <?php  
+                        if(isset($data)){
+                            if($data =="attandance"){
+  
+                        ?>
+                            hover  
 
-                        <a href="absences.html">
+                            <?php
+                              }
+                        }
+                        ?>">
+
+                        <a href="<?php echo URLROOT; ?>attandances">
 
                             <i class='bx bxs-user-check icon'></i>
                             <span class="text nav-text">الحضور</span>

@@ -2658,3 +2658,43 @@ table tr:nth-child(even) {
   background-color: #f4f6fb;
 }
 
+
+/*
+* page get attandance
+*
+*/
+
+.method{
+  text-align: center;
+  
+}
+.method a{
+  position: relative;
+  padding: 10px 10px ;
+  width: 25%;
+  font-size: 1.1em;
+  text-decoration: none;
+  font-weight: 600;
+  background-color: #ffffff;
+  color: black;
+  border-radius: 10px;
+  transition: 0.2s;
+  border: none;
+  cursor: pointer;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2), -2px -2px 8px rgba(0, 0, 0, 0.2);
+
+  
+}
+.method a i{
+  font-weight: 600;
+}
+.method a:hover{
+  transform: scale(1.1);
+}
+.choosemethod{
+  background-color: #161d34 !important;
+  color: #ffff !important ;
+}
+.choosemethod i{
+  color: #ffffff !important;
+}

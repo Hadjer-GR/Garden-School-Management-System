@@ -9,19 +9,16 @@ class showclass {
     private $get_nbr_student="select count(student_id) from ".DB_NAME.".student_class where class_id=?;";
     private $get_total_price="select count(id) from ".DB_NAME.".student_month where  month_n=? and year_nbr=? and class_id=? and year_id=?;";
     private $get_nbr_dont_pay="
-    select count(".DB_NAME.".student_class.student_id) from  ".DB_NAME.".student_class  
-inner join ".DB_NAME.".student_month
-on ".DB_NAME.".student_class.class_id=".DB_NAME.".student_month.class_id 
-  where ".DB_NAME.".student_class.class_id=? and ".DB_NAME.".student_class.student_id not in (select student_id from ".DB_NAME.".student_month where  month_n=? and year_nbr=? and class_id=? and year_id=?);
-
-   ";
+    select  count(database_aouetef.student_class.student_id) from database_aouetef.student_class  
+  where class_id=? and  database_aouetef.student_class.student_id not in (select student_id from database_aouetef.student_month where  month_n=? and year_nbr=? and class_id=? and year_id=?);
+";
    
    private $get_student="select id,f_name,l_name  from ".DB_NAME.".student 
    where  id in (select student_id from ".DB_NAME.".student_class where class_id=?) and year_id=? ;";
 
-  private $get_student_month=" select student_id from ".DB_NAME.".student_month where class_id=? and month_n=? and year_id=?;
-  ";
-
+  private $get_student_month=" select student_id from ".DB_NAME.".student_month where class_id=? and month_n=? and year_id=?;";
+  
+  private $get_attandance='select student_id from '.DB_NAME.'.attandance where class_id=? and day_t=?;';
 
 
 
@@ -170,6 +167,26 @@ on ".DB_NAME.".student_class.class_id=".DB_NAME.".student_month.class_id
         return $student_month;
       
     }
+
+
+    
+  /*
+    *
+    * get  class name 
+    */
+
+    public function get_attandance($class_id,$date_t){
+
+      $this->db->preparedstmt($this->get_attandance);
+     
+        $this->db->bind_Value(1,$class_id,null);
+        $this->db->bind_Value(2,$date_t,null);
+        $attandance=$this->db->fetchAll();
+        
+        return $attandance;
+      
+    }
+
 
     
 }
