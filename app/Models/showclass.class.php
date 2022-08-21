@@ -15,6 +15,13 @@ on ".DB_NAME.".student_class.class_id=".DB_NAME.".student_month.class_id
   where ".DB_NAME.".student_class.class_id=? and ".DB_NAME.".student_class.student_id not in (select student_id from ".DB_NAME.".student_month where  month_n=? and year_nbr=? and class_id=? and year_id=?);
 
    ";
+   
+   private $get_student="select id,f_name,l_name  from ".DB_NAME.".student 
+   where  id in (select student_id from ".DB_NAME.".student_class where class_id=?) and year_id=? ;";
+
+  private $get_student_month=" select student_id from ".DB_NAME.".student_month where class_id=? and month_n=? and year_id=?;
+  ";
+
 
 
 
@@ -125,5 +132,44 @@ on ".DB_NAME.".student_class.class_id=".DB_NAME.".student_month.class_id
 
 
     
+  /*
+    *
+    * get  student in class f_name ,_l_name ,id
+    *
+    */
+
+    public function get_student($class_id,$year_id){
+
+      $this->db->preparedstmt($this->get_student);
+     
+        $this->db->bind_Value(1,$class_id,null);
+        $this->db->bind_Value(2,$year_id,null);
+        $student=$this->db->fetchAll();
+        
+        return $student;
+      
+    }
+
+
+     
+  /*
+    *
+    * get  id of student who pay this month
+    */
+
+    public function get_student_month($class_id,$month_nbr,$year_id){
+
+      $this->db->preparedstmt($this->get_student_month);
+
+        $this->db->bind_Value(1,$class_id,null);
+        $this->db->bind_Value(2,$month_nbr,null);
+        $this->db->bind_Value(3,$year_id,null);
+
+        $student_month=$this->db->fetchAll();
+        
+        return $student_month;
+      
+    }
+
     
 }

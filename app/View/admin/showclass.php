@@ -97,18 +97,52 @@
                 </thead>
                 <tbody dir="rtl">
                 
-                
-             
-                        <tr>
-                        <td><c:out value="" />غراب رانيا</td>
-                        <td><c:out value="" /><span> </span> <span></span></td>
-                        <td><c:out value="" />5</td>
-                        <td>&nbsp; </td>
-                        <td class="btndelete">    <a href="" class=" trash"><i class='bx bx-trash'></i></a></td>
-                      
+                <?php 
+       
+       if($_SESSION['id_year_scolaire'] && $_SESSION['class_id']){
+       $year_id= $_SESSION['id_year_scolaire'];
+       $class_id=$_SESSION['class_id'];
+       $month_nbr=date("m");
+      require_once "../app/Models/showclass.class.php";
+      
+      $postmodel=new showclass;
+       
+      $student=$postmodel->get_student($class_id,$year_id);
+      $student_month=$postmodel->get_student_month($class_id,$month_nbr,$year_id);
 
-                    </tr>
+    
+      for ($i=0; $i < sizeof($student); $i++) { 
+       
+     
+      
+      ?>
+           
+        <tr>
+        <td><c:out value="" /><?php echo $student[$i]->f_name." ".$student[$i]->l_name  ?> </td>
+
+     <?php for ($j=0; $j < sizeof($student_month); $j++) { 
+        if($student_month[$j]->student_id == $student[$i]->id){
+            
+            ?>
+
+        <td><c:out value="" /><a style="color: green;"><i class='bx bxs-user-check' ></i> </a> <span></span></td>
+    <?php } else{?>
+        <td><c:out value="" /><a style="color: red;"><i class='bx bxs-user-x' ></i></a></td>
+
+
+<?php }}?>
+
+
+        <td><c:out value="" />5</td>
+        <td>&nbsp; </td>
+        <td class="btndelete"><a href="showclass/delete_student?student_id=<?php echo $student[$i]->id ?>" class=" trash"><i class='bx bx-trash'></i></a></td>
+        </tr>
                
+
+
+
+<?php }}?>
+
                     
                 </tbody>
             </table>
