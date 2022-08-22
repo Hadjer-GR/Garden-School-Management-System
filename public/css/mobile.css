@@ -643,3 +643,26 @@
   
   overflow-y: hidden;
 }
+.home .mainindex .bigchart .contentStatistics{
+  height: auto;
+  width: 100% !important;
+  height: 220px!important;
+}
+.home .mainindex .bigchart .contentStatistics .resultnote {
+  position: relative;
+  width: 90% !important;
+  height: 100% !important;
+ 
+  height: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 20px !important;
+  background-color: #fff;
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2), -6px -6px 10px rgba(0, 0, 0, 0.2);
+}
+.home .mainindex .etud1 .contentStatistics .resultnote{
+  position: relative !important;
+  width: 90% !important;
+}

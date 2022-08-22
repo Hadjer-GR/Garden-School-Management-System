@@ -121,10 +121,7 @@
         <br>
         <div class="contentclass">
 
-   <div class="infoclass method">
-    <a class="method1 choosemethod" id="method_1" >  <span class="imethod1"><i class='bx bx-check'>يدوي</i></span></a>
-    <a  class="method2" id="method_2"> تلقائي</a>
-   </div>
+  
 
 
     <!-- list Student -->
@@ -156,8 +153,8 @@
       $student=$postmodel->get_student($class_id,$year_id);
       $date_t=date("Y")."-".date("m")."-".date("d");
       $attandace=$postmodel->get_attandance($class_id,$date_t);
-     
-    
+   
+      
       for ($i=0; $i < sizeof($student); $i++) { 
         $k=0;
         

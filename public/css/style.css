@@ -982,7 +982,7 @@ body.dark .home .text {
 .home .mainindex {
   position: relative;
   width: 90%;
-  height: 80%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -2698,3 +2698,27 @@ table tr:nth-child(even) {
 .choosemethod i{
   color: #ffffff !important;
 }
+
+/*
+*
+* design month chart js 
+*
+*/
+
+.bigchart{
+  position: relative;
+  
+}
+.home .mainindex .bigchart .contentStatistics{
+  height: 300px !important;
+  width: 80% !important;
+}
+.home .mainindex .bigchart .contentStatistics .resultnote{
+  position: relative;
+  width: 60% ;
+  height: 100% ;
+  margin-left: auto ;
+  margin-right: auto ;
+
+}
+

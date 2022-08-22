@@ -15,7 +15,7 @@
 
 <?php  require_once"header.php";?>
 
-<section class="home ">
+<section class="home " >
   <div class="headermobile">
           <i class='bx bx-menu togglemenu'></i>
 
@@ -23,8 +23,10 @@
       </div>
 
 
-
-
+    <br><br>
+      <div class="infoclass method" dir="rtl">
+    <a class="method1 choosemethod" id="method_1" >  <span class="imethod1"><i class='bx bx-check'>تلقائي</i></span></a>
+   </div>
       <div class="contentbox" >
 
 
