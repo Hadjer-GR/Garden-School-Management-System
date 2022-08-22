@@ -154,7 +154,7 @@
       $postmodel=new showclass;
        
       $student=$postmodel->get_student($class_id,$year_id);
-      $date_t=date("Y")."-".date("m")."-".date("d")-1;
+      $date_t=date("Y")."-".date("m")."-".date("d");
       $attandace=$postmodel->get_attandance($class_id,$date_t);
      
     

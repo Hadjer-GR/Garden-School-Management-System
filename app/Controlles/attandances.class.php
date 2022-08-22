@@ -67,7 +67,7 @@ class attandances extends Controllers{
         if(($_SERVER['REQUEST_METHOD'] == 'GET') &&  isset($_SESSION["user_id"])){
           $class_id=$_SESSION["class_id"];
           $student_id=$_GET["student_id"];
-          $date_t=date("Y")."-".date("m")."-".date("d")-1;
+          $date_t=date("Y")."-".date("m")."-".date("d");
   
         $id=  $this->attandancenModel->verfie_attandance($student_id,$class_id,$date_t);
        
