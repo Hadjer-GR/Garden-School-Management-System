@@ -22,7 +22,55 @@
 
           <div class="text texthome">الاقسام</div>
       </div>
+      <?php if(isset($msg[4]) && $msg[4]!="error"){
       
+  
+      ?>
+          <script>  showBanner('.banner.success');</script> 
+          <?php  } if(isset($msg[4]) && $msg[4]=="error"){?>
+
+            <script>    showBanner('.banner.error'); </script> 
+
+          <?php } ?>
+                    
+
+
+          <div class="banners-container" dir="ltr">
+  <div class="banners" dir="ltr">
+  <div class="banner error">
+      <div class="banner-message" dir="ltr">
+      <span class="banner-icon">
+      <i class='bx bx-error-circle' style="height:48px ; width:48px;"></i>
+      </span>
+      <?php if(isset($msg[4]) && $msg[4] =="error"){
+      
+      echo $msg[5]; }
+       ?>
+            </div>
+      <div class="banner-close" onclick="hideBanners()"><i class='bx bx-x'></i></div>
+    </div>
+    <div class="banner success">
+      <div class="banner-message" dir="ltr">
+       <span class="banner-icon">
+    <i class='bx bx-check'></i>
+      </span>
+      
+      <?php if(isset($msg[4]) && $msg[4] !="error"){
+      
+     echo $msg[4]; }
+      ?>  </div>
+      <div class="banner-close" onclick="hideBanners()"><i class='bx bx-x'></i></div>
+    </div>
+   
+  </div>
+</div>
+
+
+
+
+
+
+
          
 
 
@@ -88,8 +136,8 @@
                     <tr>
                         <th>التلميذ (ة) </th>
                         <th> الاشتراك    </th>
-                        <th>   الحضور </th>
-                        <th>&nbsp;</th>
+                        <th>   &nbsp;</th>
+                        <th> الحضور</th>
                         <th>الغاء الاشتراك  </th>
                        
 
@@ -125,17 +173,18 @@
              $k=1;
             ?>
 
-        <td><c:out value="" /><a style="color: green;"><i class='bx bxs-user-check' ></i> </a> <span></span></td>
+        <td class="btndelete"><c:out value="" /><a style="color: green;"> <i class='bx bxs-user-check' ></i> </a> <span></span></td>
+
     <?php }} if($k==0){?>
-        <td><c:out value="" /><a style="color: red;"><i class='bx bxs-user-x' ></i></a></td>
+        <td><c:out value="" /><a href="<?php echo URLROOT ;?>showclasses/pay?student_id=<?php echo $student[$i]->id ?>" style="color: red;"><i class='bx bxs-user-x' ></i></a></td>
+
+
 
 
 <?php }?>
-
-
+        <td>&nbsp;</td>
         <td><c:out value="" />5</td>
-        <td>&nbsp; </td>
-        <td class="btndelete"><a href="showclass/delete_student?student_id=<?php echo $student[$i]->id ?>" class=" trash"><i class='bx bx-trash'></i></a></td>
+        <td class="btndelete"><a href="<?php echo URLROOT ;?>showclasses/delete?student_id=<?php echo $student[$i]->id ?>" class=" trash"><i class='bx bx-trash'></i></a></td>
         </tr>
                
 

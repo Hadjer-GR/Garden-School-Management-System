@@ -20,9 +20,14 @@ class showclass {
   
   private $get_attandance='select student_id from '.DB_NAME.'.attandance where class_id=? and day_t=?;';
 
+  private $student_pay="insert into ".DB_NAME.".student_month(month_n,year_nbr,class_id,student_id,year_id)values(?,?,?,?,?);";
+  private $delete_student="delete  from ".DB_NAME.".student_class where  student_id=?  and class_id=?;";  
 
 
-    
+
+
+
+
   public function __construct()
   {
     $this->db=new Database();
@@ -57,6 +62,7 @@ class showclass {
       $this->db->preparedstmt($this->get_nbr_student);
      
         $this->db->bind_Value(1,$class_id,null);
+
         $nbr_student=$this->db->nbrfetch();
         $nbr=0;
         if(isset($nbr_student) && $nbr_student !=""){
@@ -186,6 +192,57 @@ class showclass {
         return $attandance;
       
     }
+
+
+
+
+
+
+
+
+    /*
+    * student_pay this month 
+    *
+    */
+
+
+    public function student_pay($month_nbr,$year_nbr,$class_id,$student_id,$year_id){
+
+      $this->db->preparedstmt($this->student_pay);
+
+        $this->db->bind_Value(1,$month_nbr,null);
+        $this->db->bind_Value(2,$year_nbr,null);
+        $this->db->bind_Value(3,$class_id,null);
+        $this->db->bind_Value(4,$student_id,null);
+        $this->db->bind_Value(5,$year_id,null);
+        $this->db->executeQuery();
+      
+
+      
+    }
+
+
+    
+    /*
+    *  delete student from this class
+    *
+    */
+
+
+    public function delete_student($student_id,$class_id){
+
+      $this->db->preparedstmt($this->delete_student);
+
+        $this->db->bind_Value(1,$student_id,null);
+        $this->db->bind_Value(2,$class_id,null);
+       
+        $this->db->executeQuery();
+      
+
+      
+    }
+
+
 
 
     
