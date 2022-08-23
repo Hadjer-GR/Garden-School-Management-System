@@ -18,9 +18,9 @@ class Showclasses extends Controllers{
 
     public function index(){
 
-        if(isset($_SESSION["user_id"])){
+        if(isset($_SESSION["user_id"]) && ($_SERVER['REQUEST_METHOD'] == 'GET')){
 
-   if(($_SERVER['REQUEST_METHOD'] == 'GET')){
+  
     $class_id=$_GET["class_id"];
     $_SESSION["class_id"]=$class_id;
 
@@ -44,7 +44,10 @@ class Showclasses extends Controllers{
       
         }
 
-    }}}
+    }else{
+      redirect("");
+    }
+  }
 
 
     /*
@@ -110,6 +113,9 @@ class Showclasses extends Controllers{
     }
 
  public function view_class(){
+  if(isset($_SESSION["user_id"])){
+
+  
 
   $class_id=$_SESSION["class_id"];
 
@@ -117,7 +123,9 @@ class Showclasses extends Controllers{
    $msg=$this->class_info($class_id);
          
    $this->postview=$this->view("admin/showclass","section",$msg);
-
+  }else{
+    redirect("");
+  }
  }
 
 

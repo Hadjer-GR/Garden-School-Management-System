@@ -21,8 +21,9 @@ on ".DB_NAME.".class.teacher_id=".DB_NAME.".teacher.id where year_id=?;";
 private $get_teachers='select id,f_name,l_name from '.DB_NAME.'.teacher where job=" (ة) استاذ" and  work ="yes" ;';
 
 
-
-
+private $verfie_class_1="select student_id from ".DB_NAME.".student_class where class_id=?;";
+private $verfie_class_2="select id from ".DB_NAME.".attandance where class_id=?;";
+private $delete_class="delete from ".DB_NAME.".class where id=?;";
 
 
 
@@ -125,6 +126,66 @@ public function get_teacher_class(){
 
   return $teacher_class;
 
+  
+}
+
+
+
+/*
+*
+* verfie id there are students in class or not 
+*
+*/
+
+
+public function verfie_class_1($class_id){
+
+  $this->db->preparedstmt($this->verfie_class_1);
+  $this->db->bind_Value(1,$class_id,null); 
+  $nbr=$this->db->fetchAll();
+
+  $id=1;
+  if(isset($nbr) && sizeof($nbr)!=""){
+    $id=0;
+  }
+      
+    return $id;
+  
+}
+
+/*
+*
+* verfie  there before attandance in this class 
+*/
+
+
+public function verfie_class_2($class_id){
+
+  $this->db->preparedstmt($this->verfie_class_2);
+  $this->db->bind_Value(1,$class_id,null); 
+  $nbr=$this->db->fetchAll();
+
+  $id_2=1;
+  if(isset($nbr) && sizeof($nbr)!=""){
+    $id_2=0;
+  }
+      
+    return $id_2;
+  
+}
+
+/*
+*
+* delete class
+*
+*/
+
+
+public function delete_class($class_id){
+
+  $this->db->preparedstmt($this->delete_class);
+  $this->db->bind_Value(1,$class_id,null); 
+  $this->db->executeQuery();
   
 }
 

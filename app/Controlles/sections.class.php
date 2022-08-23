@@ -121,4 +121,44 @@ public function addclass(){
 
   }
 
+
+
+  public function delete_class(){
+
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_SESSION["user_id"])) {
+
+   $class_id=$_GET["class_id"];
+
+   //1. vefiie if there is student in the class 
+
+  $id=$this->sectionModel->verfie_class_1($class_id);
+  $id2=$this->sectionModel->verfie_class_2($class_id);
+  
+ 
+  if($id==0 && $id2==0){
+    $id=$this->sectionModel->delete_class($class_id);
+    $msg[0]="تم حذف القسم بنجاح";
+   
+
+
+  }else{
+    
+    $msg[0]="error";
+    if($id2==1){
+      $msg[1]="عذرا لا يمكنك حذف هذا القسم  ";
+    }else{
+      $msg[1]=" يرجى من فضلك اولا حذف  جميع التلميذ هذا  القسم     &nbsp;  &nbsp;  بعد ذالك يمكنك حذف القسم  ";
+
+    }
+
+
+  }
+  $_SESSION["complet"]=$msg;
+  redirect("sections");
+
+    }else{
+      redirect("");
+    }
+  }
+
 }

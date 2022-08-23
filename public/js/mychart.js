@@ -59,12 +59,12 @@ var ctx=document.getElementById("lineChart");
       label: "المداخيل",
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
+      data: [22000000, 80000],
     },{
         label: "المصاريف",
         backgroundColor: '#2375BD',
       borderColor: '#2375BD',
-        data: [18, 19, 20, 18, 5, 4, 3],
+        data: [2222222, 800000],
       }]
   };
  
