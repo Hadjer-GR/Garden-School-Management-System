@@ -2723,11 +2723,8 @@ table tr:nth-child(even) {
 }
 .editeclass{
   position: absolute !important;
-  top: 20%;
+  top: 5%;
   background-color: var(--body-color);
-   left: 35%;
-   border-radius: 10px !important;
-}
-.editeclass h2{
-  background-color: !important;
+   left: 20%;
+   border-radius: 10px ;
 }
