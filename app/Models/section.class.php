@@ -25,8 +25,9 @@ private $verfie_class_1="select student_id from ".DB_NAME.".student_class where 
 private $verfie_class_2="select id from ".DB_NAME.".attandance where class_id=?;";
 private $delete_class="delete from ".DB_NAME.".class where id=?;";
 
-
-
+private $get_class_info="select * from ".DB_NAME.".class where id=?;";
+private $update_class="update ".DB_NAME.".class set n_class=?, price=? , teacher_id=?  ,nbr_session=?  where id=?;
+";
 
 public function __construct()
 {
@@ -186,6 +187,45 @@ public function delete_class($class_id){
   $this->db->preparedstmt($this->delete_class);
   $this->db->bind_Value(1,$class_id,null); 
   $this->db->executeQuery();
+  
+}
+
+
+/*
+*
+* get class information 
+*
+*/
+
+
+public function get_class_info($class_id){
+
+  $this->db->preparedstmt($this->get_class_info);
+  
+    $this->db->bind_Value(1,$class_id,null);
+    $clas_info=$this->db->fetch();
+   
+    return $clas_info;
+  
+}
+
+
+/*
+* update class information 
+*/
+
+
+public function update_class($class_n,$session_nbr,$price, $teacher_id,$class_id){
+
+  $this->db->preparedstmt($this->update_class);
+
+    $this->db->bind_Value(1,$class_n,null);
+    $this->db->bind_Value(2,$price,null);
+    $this->db->bind_Value(3,$teacher_id,null);
+    $this->db->bind_Value(4,$session_nbr,null);
+    $this->db->bind_Value(5,$class_id,null);
+
+    $this->db->executeQuery();
   
 }
 

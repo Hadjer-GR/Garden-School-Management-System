@@ -161,4 +161,56 @@ public function addclass(){
     }
   }
 
+/*
+*
+* edite class 
+*/
+
+public function edite_class(){
+  if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_SESSION["user_id"])) {
+   $class_id=$_GET["class_id"];
+
+    $class_info=$this->sectionModel->get_class_info($class_id);
+
+   $msg[0]="edite_class";
+   $msg[1]= $class_info;
+
+   $this->postview=$this->view("admin/edite","section",$msg);
+
+
+
+  }else{
+    redirect("");
+  }
+}
+
+/*
+* update information class 
+*
+*/
+
+public function update_class(){
+  if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION["user_id"])) {
+    $class_n=$_POST['class_name'];
+        $session_nbr=(int)$_POST['session_nbr'];
+        $price=$_POST['price'];
+        $teacher_id=(int)$_POST['teacher_class'];
+        $class_id=$_POST["class_id"];
+        $class_info=$this->sectionModel->update_class($class_n,$session_nbr,$price, $teacher_id,$class_id);
+
+        $msg[0]="تم تعديل القسم بنجاح  شكرا" ;
+
+        $_SESSION["complet"]=$msg;
+        redirect("sections");
+      
+
+
+
+
+  }else{
+    redirect("");
+  }
+
+}
+
 }

@@ -120,7 +120,7 @@
   <div class="class_btn">
                          
                      
-   <a href="" > <i class='bx bx-edit'></i></a>
+   <a href="<?php echo URLROOT ;?>sections/edite_class?class_id= <?php echo $all_class[$i]->id ?>" > <i class='bx bx-edit'></i></a>
     <a href="<?php echo URLROOT ;?>sections/delete_class?class_id= <?php echo $all_class[$i]->id ?>" class="trash"><i class='bx bx-trash'></i></a>
                   
                     </div>
@@ -268,80 +268,7 @@
     </div>
 
 
-    <div class="addclass editeclass">
-       
-     <br>
-     
-            <!-- fomullaire-->
-            <div class="student">
-            <form action="<?php echo URLROOT ;?>sections/editeclass?class_id=" method="post" dir="rtl">
-            <h2>تعديل قسم</h2>
-                  <div class="contentstudent">
-
-                
-                <div class="user-input1">
-                    <label>اسم القسم </label>
-                   <input type="text" required name="class_name" placeholder="  اسم القسم  ">     
-                  </div>
-                   
-
-                  <div class="user-input4">
-                    <label>عدد الحصص </label>
-                   <input type="number" required name="session_nbr"  min ="1" max="31" placeholder="    عدد الحصص في الشهر ">     
-                  </div>
-
-                 
-                  
-                  <div class="user-input4">
-                    <label>المبلغ الشهري </label>
-                   <input type="number" required name="price" step="0.001" placeholder="    المبلغ الشهري ">     
-                  </div>
-           
-                
-                  <div class="user-input" placeholder="">
-                    <label>الاستاذ    المسؤول</label>
-                   <select name="teacher_class"> 
-                    <option value="0"> ليس بعد</option>
-
-
-                    <?php 
- require_once "../app/Models/section.class.php";
-      
- $postmodel=new section;
-
- $teacher_class=$postmodel->get_teacher_class();
-
-
- for ($i=0; $i < sizeof($teacher_class); $i++) { 
-  
-
- 
-
-
-?>
-                    <option value="<?php echo $teacher_class[$i]->id ?>">  <?php echo $teacher_class[$i]->f_name.$teacher_class[$i]->l_name?>   </option>
-
-<?php  }?>
-
-
-
-
-                    </select>     
-                  </div>
-                 
-                </div>
-                  <div class="submit">
-                    <input type="submit" value="اظافة">
-                  </div>
-
-            </form>
-         
-
-
-
-
-
-          </div>
+   
   </section>
 
 
