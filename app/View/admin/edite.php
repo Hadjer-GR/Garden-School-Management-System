@@ -15,9 +15,69 @@
 <?php  require_once"header.php";?>
 
 
+<script>
+      // banner
 
+  const showBanner = (selector) => {
+        	  hideBanners();
+        	  // Ensure animation plays even if the same alert type is triggered.
+        	  requestAnimationFrame(() => {
+        	    const banner = document.querySelector(selector);
+        	    banner.classList.add("visible");
+        	  });
+        	};
+
+        	const hideBanners = (e) => {
+        	  document
+        	    .querySelectorAll(".banner.visible")
+        	    .forEach((b) => b.classList.remove("visible"));
+        	};
+        	
+
+    </script>
+
+
+<?php if(isset($msg[5]) && $msg[5]!="error"){
+      
+  
+      ?>
+          <script>  showBanner('.banner.success');</script> 
+          <?php  } if(isset($msg[5]) && $msg[5]=="error"){?>
+
+            <script>    showBanner('.banner.error'); </script> 
+
+          <?php } ?>
   
 
+          <div class="banners-container" dir="ltr">
+  <div class="banners" dir="ltr">
+  <div class="banner error">
+      <div class="banner-message" dir="ltr">
+      <span class="banner-icon">
+      <i class='bx bx-error-circle' style="height:48px ; width:48px;"></i>
+      </span>
+      <?php if(isset($msg[5]) && $msg[5] =="error"){
+      
+      echo $msg[6]; }
+       ?>
+            </div>
+      <div class="banner-close" onclick="hideBanners()"><i class='bx bx-x'></i></div>
+    </div>
+    <div class="banner success">
+      <div class="banner-message" dir="ltr">
+       <span class="banner-icon">
+    <i class='bx bx-check'></i>
+      </span>
+      
+      <?php if(isset($msg) && $msg[5] !="error"){
+      
+     echo $msg[5]; }
+      ?>  </div>
+      <div class="banner-close" onclick="hideBanners()"><i class='bx bx-x'></i></div>
+    </div>
+   
+  </div>
+</div>
 
 
 
@@ -189,7 +249,7 @@
          
            
                require_once "../app/Models/section.class.php";
-               
+                
                $postmodel=new section;
          
                $all_class=$postmodel->get_all_class($year_id);
@@ -206,36 +266,40 @@
    
                   <div class="user-input" placeholder="">
                     <label>القسم <?php echo$j+1;?>  </label>
-                   <select name="student_class<?php echo$j+1;?>"> 
+                   <select name="student_class<?php echo$j;?>"> 
                    
 
                    <?php 
        
 
-   
-      for ($i=0; $i < sizeof($all_class); $i++) { 
+        
+      for ($i=0; $i <sizeof($all_class); $i++) { 
        
      
       
       ?>
 
-                    <option value="<?php echo $all_class[$i]->id ?>"  <?php if($all_class[$i]->id ==$msg[2][$j]->class_id){
-
+                    <option value="<?php echo $all_class[$i]->id ?>"  <?php
+                    
+                   
+                    if($all_class[$i]->id ==$msg[2][$j]->class_id){
+                     
                       echo"selected";
+                   
                     }?>> <?php echo $all_class[$i]->n_class ?></option>
-
-                 
+                   
 
                     <?php } ?>
-
+                  
 
                     </select>     
                   </div>
-
+                 
 
           <?php  } }
             }
-
+           
+         
             ?>
 
 
@@ -247,7 +311,7 @@
                    
                 </div>
                   <div class="submit">
-                    <input type="submit" value="اظافة">
+                    <input type="submit" value="تعديل">
                   </div>
 
             </form>
@@ -263,7 +327,7 @@
        
 
 
-<?php } ?>
+<?php   }  ?>
 
 
 </body>

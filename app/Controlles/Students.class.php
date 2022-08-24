@@ -78,7 +78,7 @@ class Students extends Controllers{
          $f_name=$_POST['f_name'];
          $l_name=$_POST['l_name'];
          $date=$_POST['date_birth'];
-         $class_id=(int)$_POST['student_class'];
+         $class_id=$_POST['student_class'];
          $parent_n=$_POST["parent_n"];
          $parent_nbr=$_POST["parent_nbr"];
        
