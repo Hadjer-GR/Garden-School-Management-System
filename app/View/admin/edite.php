@@ -329,6 +329,101 @@
 
 <?php   }  ?>
 
+<!--  inscription student in other class -->
+
+
+<!-- edite class if msg0=class  -->
+<?php if(isset($msg) && $msg[0]=="add_class"){?>
+  <section class="home">
+<div class="headermobile">
+          <i class='bx bx-menu togglemenu'></i>
+
+          <div class="text texthome">السجل</div>
+      </div>
+
+    <div class="titlenote">
+            <a href="<?php echo URLROOT ;?>list_students" class="btnleft"> <i class='bx bx-reply'></i>
+            </a>
+  <span>الغاء</span>
+    </div>
+<div class="addclass">
+        <br><br>
+        <div class="titleform">
+
+         <h2 class="addperson">  اظافة التسجيل في  قسم اخر  </h2>
+        </div>
+     <br>
+     
+            <!-- fomullaire-->
+            <div class="student">
+            <form action="<?php echo URLROOT ;?>list_students/inscript" method="post" dir="rtl">
+                  <div class="contentstudent">
+                <input type="hidden" name="student_id" value="<?php echo $msg[2][0]->id;?>">
+                
+                <div class="user-input1">
+                    <label>اسم التلميذ </label>
+                   <input type="text" required name="f_name" value="<?php echo $msg[2][0]->f_name;?>" placeholder="  اسم القسم  ">     
+                  </div>
+                   
+
+                  <div class="user-input4">
+                    <label> اللقب </label>
+                   <input type="text" required name="l_name" value="<?php echo $msg[2][0]->l_name;?>"  >     
+                  </div>
+
+                 
+                  
+                 
+           
+                
+                  <div class="user-input" placeholder="">
+                    <label>القسم    </label>
+                   <select name="class_nbr"> 
+
+
+                    <?php 
+ 
+
+
+
+ for ($i=0; $i < sizeof($msg[1]); $i++) { 
+  
+
+ 
+
+
+?>
+                    <option value="<?php echo $msg[1][$i]->id ?>">  <?php echo $msg[1][$i]->n_class;?>   </option>
+
+<?php  }?>
+
+
+
+
+                    </select>     
+                  </div>
+                 
+                </div>
+                  <div class="submit">
+                    <input type="submit" value="اظافة">
+                  </div>
+
+            </form>
+         
+
+
+
+
+
+          </div>
+        
+    </div>
+    </section>
+
+
+<?php }?>
+
+
 
 </body>
 </html>

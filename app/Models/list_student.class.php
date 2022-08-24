@@ -15,7 +15,9 @@ private $update_student_info='update '.DB_NAME.'.student set f_name=?,l_name=?,d
 private $update_parent_info="update ".DB_NAME.".parent_student set numero=?,n_parent=? where id=?;";
     
 private $update_student_class="update ".DB_NAME.".student_class set class_id=? where student_id=?;";
+ private $list_class="select id,n_class from database_aouetef.class 
 
+ where id  not in (select database_aouetef.student_class.class_id from database_aouetef.student_class where student_id=?);";
 
 
 public function __construct()
@@ -145,6 +147,27 @@ public function update_student_info($f_name,$l_name,$date,$id){
      $this->db->executeQuery();
     
   }
+
+
+/*
+  * list class
+  */
+  
+  public function list_class($student_id){
+
+    $this->db->preparedstmt($this->list_class);
+  
+  
+   $this->db->bind_Value(1,$student_id,null);
+    
+  
+   $list= $this->db->fetchAll();
+   return $list;
+    
+  }
+  
+
+
 
 
 }

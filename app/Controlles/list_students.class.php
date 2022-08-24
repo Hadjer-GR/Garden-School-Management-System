@@ -244,12 +244,61 @@ $msg[3]=$parent_info;
 */
 
 
+public function add_class(){
+
+  if(isset($_SESSION["user_id"]) && ($_SERVER['REQUEST_METHOD'] == 'GET')){
+
+    $student_id=$_GET["student_id"];
+    $year_id=$_SESSION['id_year_scolaire'];
+  
+
+     $list_class=$this->list_studentModel->list_class($student_id);
+     
+  // getting 
+
+    $msg[0]="add_class";   
+   $msg[1]=$list_class;
+  
+   //student info     
+    $student_info=$this->list_studentModel->get_student_info($student_id,$year_id);
+    $msg[2]=$student_info;
+    $this->postview=$this->view("admin/edite","list_student",$msg);
+
+
+  
+  }else{
+    redirect("");
+  }
+}
 
 
 
+/*
+*
+*add student   inscript in  class 
+*/
+public function inscript(){
+  if(isset($_SESSION["user_id"]) && ($_SERVER['REQUEST_METHOD'] == 'POST')){
 
 
+   $class_id=$_POST["class_nbr"];
+   $student_id=$_POST["student_id"];
 
+
+   require_once "../app/Models/Student.class.php";
+      
+   $studentModel=new Student;
+   
+  //3. insert  class of this student 
+   $studentModel->insert_student_class($student_id,$class_id);
+
+   redirect("list_students");
+
+  }else{
+    redirect("");
+  }
+
+}
 
 
 
