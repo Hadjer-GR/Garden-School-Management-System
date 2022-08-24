@@ -193,7 +193,7 @@
 
                     <li class="nav-link">
 
-                        <div class="drop">
+                        <div class="drop drop2">
 
 
                             <label for="btndropMeneu_2">
@@ -202,6 +202,24 @@
 
                                 </span>
                                 <span>
+                                <?php  
+                        if(isset($data)){
+                            if($data =="list_student" || $data=="list_employ"){
+  
+                        ?>
+                           <style>
+                            
+                            .drop2{
+                                background-color:#17191a3a !important;
+                                border-radius: 10px;
+                            }
+                           </style>
+                            <?php
+                             
+                        
+                        }
+                    }
+                        ?>
                                   سجلات
                                 </span>
                             </label>
@@ -212,7 +230,17 @@
                     </li>
                     <div class="dropmenu_2">
                         <ul class="menu-links">
-                            <li class="nav-link"><a href="#">
+                            <li class="nav-link <?php  
+                        if(isset($data)){
+                            if($data =="list_student"){
+  
+                        ?>
+                            hover  
+
+                            <?php
+                              }
+                        }
+                        ?>"><a href="<?php echo URLROOT; ?>list_students">
                                     <span class="icon">
                                         <i class='bx bx-face'></i>
                                     </span>
@@ -222,7 +250,17 @@
 
 
                                 </a></li>
-                            <li class="nav-link"><a href="#">
+                            <li class="nav-link <?php  
+                        if(isset($data)){
+                            if($data =="list_employ"){
+  
+                        ?>
+                            hover  
+
+                            <?php
+                              }
+                        }
+                        ?>"><a href="<?php echo URLROOT; ?>list_employes">
                                     <span class="icon">
                                         <i class='bx bxs-user-account'></i>
                                     </span>

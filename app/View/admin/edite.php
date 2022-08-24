@@ -15,12 +15,6 @@
 <?php  require_once"header.php";?>
 
 
-<section class="home">
-<div class="headermobile">
-          <i class='bx bx-menu togglemenu'></i>
-
-          <div class="text texthome">الاقسام</div>
-      </div>
 
   
 
@@ -31,7 +25,13 @@
 
 <!-- edite class if msg0=class  -->
 <?php if(isset($msg) && $msg[0]=="edite_class"){?>
-  
+  <section class="home">
+<div class="headermobile">
+          <i class='bx bx-menu togglemenu'></i>
+
+          <div class="text texthome">الاقسام</div>
+      </div>
+
     <div class="titlenote">
             <a href="<?php echo URLROOT ;?>sections" class="btnleft"> <i class='bx bx-reply'></i>
             </a>
@@ -116,16 +116,154 @@
           </div>
         
     </div>
+    </section>
+
 
 <?php }?>
 
 
 
 
+<!-- edtite student  !--->
+<?php if(isset($msg) && $msg[0]=="edite_student"){?>
+
+  <section class="home">
+<div class="headermobile">
+          <i class='bx bx-menu togglemenu'></i>
+
+          <div class="text texthome">السجل </div>
+      </div>
+
+
+      <div class="titlenote">
+            <a href="<?php echo URLROOT ;?>list_students" class="btnleft"> <i class='bx bx-reply'></i>
+            </a>
+  <span>الغاء</span>
+    </div>
 
 
 
-</section>
+            <!-- fomullaire-->
+          <div class="student">
+            <form action="<?php echo URLROOT ;?>list_students/update" method="post" dir="rtl">
+                  <div class="contentstudent">
+
+                
+                <div class="user-input1">
+                    <label>الاسم</label>
+                   <input type="text" required name="f_name" value="<?php echo $msg[1][0]->f_name;?>" placeholder="  اسم التلميذ  ">     
+                  </div>
+                  <div class="user-input2">
+                    <label>اللقب</label>
+                   <input type="text" required name="l_name" value="<?php echo $msg[1][0]->l_name;?>" placeholder="  اللقب التلميذ ">     
+                  </div>
+
+                  
+
+                  <div class="user-input3">
+                    <label>تاريخ الازدياد</label>
+                   <input type="date" required name="date_birth" value="<?php echo $msg[1][0]->date_birth;?>" placeholder="   تاريخ ازدياد التلميذ ">     
+                  </div>
+               <input type="hidden" name="student_id" value="<?php echo $msg[1][0]->id;?>">
+               <input type="hidden" name="parent_id"  value="<?php echo $msg[3][0]->id;?>">
+
+                  <div class="user-input4">
+                    <label>اسم الولي</label>
+                   <input type="text" required name="parent_n" value="<?php echo $msg[3][0]->n_parent;?>" placeholder="      اسم ولي التلميذ ">     
+                  </div>
+                  
+                  <div class="user-input4">
+                    <label>رقم الهاتف</label>
+                   <input type="number" required name="parent_nbr" value="<?php echo $msg[3][0]->numero;?>"  placeholder="  رقم هاتف الولي ">     
+                  </div>
+                 
+
+
+
+
+           <?php 
+             if(isset($msg[2])){
+            
+              if($_SESSION['id_year_scolaire']){
+                $year_id= $_SESSION['id_year_scolaire'];
+         
+           
+               require_once "../app/Models/section.class.php";
+               
+               $postmodel=new section;
+         
+               $all_class=$postmodel->get_all_class($year_id);
+              for ($j=0; $j <sizeof($msg[2]); $j++) { 
+                # code...
+             
+           ?>
+
+
+
+
+
+
+   
+                  <div class="user-input" placeholder="">
+                    <label>القسم <?php echo$j+1;?>  </label>
+                   <select name="student_class<?php echo$j+1;?>"> 
+                   
+
+                   <?php 
+       
+
+   
+      for ($i=0; $i < sizeof($all_class); $i++) { 
+       
+     
+      
+      ?>
+
+                    <option value="<?php echo $all_class[$i]->id ?>"  <?php if($all_class[$i]->id ==$msg[2][$j]->class_id){
+
+                      echo"selected";
+                    }?>> <?php echo $all_class[$i]->n_class ?></option>
+
+                 
+
+                    <?php } ?>
+
+
+                    </select>     
+                  </div>
+
+
+          <?php  } }
+            }
+
+            ?>
+
+
+
+
+
+
+
+                   
+                </div>
+                  <div class="submit">
+                    <input type="submit" value="اظافة">
+                  </div>
+
+            </form>
+         
+
+
+
+
+
+          </div>
+
+          </section>
+       
+
+
+<?php } ?>
 
 
 </body>

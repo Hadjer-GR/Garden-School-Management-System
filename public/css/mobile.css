@@ -671,3 +671,32 @@
   left: 0px !important;
   width: 80% !important;
 }
+
+
+.searchsection {
+  margin-top: 30px !important;
+}
+.searchsection  form{
+  position: relative;
+  top: -5px !important;
+  width: 100% !important;
+
+}
+.searchbar__input{
+  position: relative !important;
+  width: 80% !important;
+}
+.searchbar {
+  width: 80% !important;
+  position: relative;
+  display: flex;
+  margin-left: none !important;
+  margin-right: none !important;
+}
+/* design search button in listmatriel page  */
+.searchbar {
+  width: 100% !important;
+}
+.searchbar__button {
+  width: 30% !important;
+}

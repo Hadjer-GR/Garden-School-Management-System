@@ -81,6 +81,7 @@ class Students extends Controllers{
          $class_id=(int)$_POST['student_class'];
          $parent_n=$_POST["parent_n"];
          $parent_nbr=$_POST["parent_nbr"];
+       
    //1. insert parent   
 
       $parent_id=$this->studentModel->verfie_parent($parent_n,$parent_nbr);

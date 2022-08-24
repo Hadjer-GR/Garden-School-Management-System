@@ -1761,10 +1761,17 @@ table tr:nth-child(even) {
 /* design btn search in listmateriel page  */
 .searchsection {
   position: relative;
-  margin-top: 30px;
+  margin-top: 5px;
+}
+.searchsection  form{
+  position: relative;
+  margin-top: -30px;
+  background-color: var(--body-color);
+  box-shadow: none !important;
+  width: 100vw;
 }
 .searchbar {
-  width: 90%;
+  width: 100%;
   position: relative;
   display: flex;
   margin-left: auto;
@@ -1779,27 +1786,27 @@ table tr:nth-child(even) {
   flex-grow: 1;
   padding: 10px;
   outline: none;
-  border: 1px solid #695cfe;
+  border: 1px solid var(--primary-color);
   border-radius: 5px 0 0 5px;
-  background: var(--body-color);
+  background: #ffff;
   color: #242526;
   font-size: 1.5em;
 }
 
 .searchbar__input:focus {
-  background: white;
+  background: rgba(255, 255, 255, 0.855);
   box-shadow: 0 0 2px #8cc6ba;
 }
 
 .searchbar__input::placeholder {
   color: var(--text-color);
-  font-size: 1.5em;
-  padding-right: 20px;
+  font-size: 1.2em;
+  padding-right: 10px;
 }
 
 .searchbar__button {
   width: 10%;
-  background: #695cfe;
+  background: var(--primary-color);
   color: #ffffff;
   font-size: 1.2em;
   outline: none;
@@ -2727,4 +2734,16 @@ table tr:nth-child(even) {
   background-color: var(--body-color);
    left: 20%;
    border-radius: 10px ;
+}
+
+/*
+* deseign list student page 
+*
+*/
+.listmatriel {
+  border: none !important;
+  box-shadow: none !important;
+}
+.searchsection{
+  height: 15%;
 }
