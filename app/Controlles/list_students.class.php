@@ -335,8 +335,61 @@ public function search_student(){
   }
 }
 
+/*
+* rapport od the student
+*
+*/
 
+public function rapport(){
 
+  if (($_SERVER['REQUEST_METHOD'] == 'GET') && isset($_SESSION["user_id"])) {
+
+    $student_id=$_GET["student_id"];
+    $year_id=$_SESSION['id_year_scolaire'];
+
+    $rapport=$this->list_studentModel->student_rapport($student_id);
+     $msg[0]=$rapport;
+     
+     // 3. student information 
+$name=$this->list_studentModel->get_name_student($student_id,$year_id);
+  $msg[1]=$name;
+    $this->postview=$this->view("admin/rapport_student","list_student",$msg);
+
+  }else{
+    redirect("");
+  }
+
+}
+
+/*
+*
+* pay_rapport
+*
+*/
+
+public function pay_rapport(){
+
+  if (($_SERVER['REQUEST_METHOD'] == 'GET') && isset($_SESSION["user_id"])) {
+
+  $student_id=$_GET["student_id"];
+  $class_id=$_GET["class_id"];
+  $year_id=$_SESSION['id_year_scolaire'];
+//1. pay
+  $this->list_studentModel->pay_rapport($student_id,$class_id);
+//2. list rapport
+$rapport=$this->list_studentModel->student_rapport($student_id);
+$msg[0]=$rapport;
+
+// 3. student information 
+$name=$this->list_studentModel->get_name_student($student_id,$year_id);
+  $msg[1]=$name;
+  $this->postview=$this->view("admin/rapport_student","list_student",$msg);
+
+  }else{
+    redirect("");
+  }
+
+}
 
 
 }

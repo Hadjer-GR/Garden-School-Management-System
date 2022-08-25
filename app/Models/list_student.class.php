@@ -22,6 +22,13 @@ private $update_student_class="update ".DB_NAME.".student_class set class_id=? w
  private $search_student='select id,f_name,l_name,date_birth from '.DB_NAME.'.student  where l_name like ? ;';   
 
 
+ private $student_rapport="select student_id,month_n,year_nbr,nbr_present,is_pay,n_class,class_id from ".DB_NAME.".rapport_student
+ left join ".DB_NAME.".class
+ on ".DB_NAME.".class.id=".DB_NAME.".rapport_student.class_id
+ where student_id=?;"; 
+
+private $pay_rapport='update  '.DB_NAME.'.rapport_student set is_pay="yes" where student_id=? and class_id=?;';
+ private $get_name_student="select f_name,l_name from ".DB_NAME.".student where id=? and year_id=?;";
 public function __construct()
 {
     $this->db=new Database();
@@ -182,6 +189,52 @@ public function update_student_info($f_name,$l_name,$date,$id){
       return $student;
     
   }
+
+/*
+*
+* rapport the student all month this year
+*/
+
+public function student_rapport($student_id){
+  $this->db->preparedstmt($this->student_rapport);
+  $this->db->bind_Value(1,$student_id,null);
+  $rapport=$this->db->fetchAll();  
+  return $rapport;
+
+}
+
+/*
+*
+*
+* pay month
+*/
+
+public function pay_rapport($student_id,$class_id){
+  $this->db->preparedstmt($this->pay_rapport);
+  $this->db->bind_Value(1,$student_id,null);
+  $this->db->bind_Value(2,$class_id,null);
+
+  $this->db->executeQuery();
+
+
+}
+
+/*
+*
+*
+* get full name of student 
+*/
+
+public function get_name_student($id,$year_id){
+  $this->db->preparedstmt($this->get_name_student);
+  $this->db->bind_Value(1,$id,null);
+  $this->db->bind_Value(2,$year_id,null);
+
+  $full_name=$this->db->fetchAll();
+  return  $full_name;
+
+
+}
 
 
 

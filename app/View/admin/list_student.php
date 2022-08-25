@@ -68,7 +68,7 @@
         <td class="btndelete"><a href="<?php echo URLROOT ;?>list_students/edite?student_id=<?php echo $student[$i]->id ?>" class=" trash" style="color:#f6c038;"><i class='bx bxs-edit-alt'></i></a></td>
         <td class="btndelete"><a href="<?php echo URLROOT ;?>list_students/add_class?student_id=<?php echo $student[$i]->id ?>" class=" trash" style="color:#21CBAE;"><i class='bx bxs-customize'></i></a></td>
         <td class="btndelete"><a href="<?php echo URLROOT ;?>list_students/degree?student_id=<?php echo $student[$i]->id ?>" class=" trash" style="color:black;"><i class='bx bxs-graduation'></i></a></td>
-        <td class="btndelete"><a href="<?php echo URLROOT ;?>list_students/detail?student_id=<?php echo $student[$i]->id ?>" class=" trash" style="color:#1C94AC;"><i class='bx bxs-receipt'></i></a></td>
+        <td class="btndelete"><a href="<?php echo URLROOT ;?>list_students/rapport?student_id=<?php echo $student[$i]->id ?>" class=" trash" style="color:#1C94AC;"><i class='bx bxs-receipt'></i></a></td>
 
         </tr>
             

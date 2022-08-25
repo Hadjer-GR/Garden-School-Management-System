@@ -137,7 +137,6 @@
                         <th>التلميذ (ة) </th>
                         <th> الاشتراك    </th>
                         <th>   &nbsp;</th>
-                        <th> الحضور</th>
                         <th>الغاء الاشتراك  </th>
                        
 
@@ -183,7 +182,6 @@
 
 <?php }?>
         <td>&nbsp;</td>
-        <td><c:out value="" />5</td>
         <td class="btndelete"><a href="<?php echo URLROOT ;?>showclasses/delete?student_id=<?php echo $student[$i]->id ?>" class=" trash"><i class='bx bx-trash'></i></a></td>
         </tr>
                

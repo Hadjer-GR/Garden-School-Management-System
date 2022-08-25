@@ -2747,3 +2747,53 @@ table tr:nth-child(even) {
 .searchsection{
   height: 15%;
 }
+/* .rapport{
+  border:none;
+} */
+/* .rapport table,.rapport table  th,.rapport table tr{
+
+  border: 1px solid #161d3486;
+            border-collapse: collapse;
+            padding: 8px 5px;
+            text-align: right;
+            color: #252832;
+} */
+.rapport table{
+  border-left: 1px solid rgba(0, 0, 0, 0.15);
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
+
+}
+.rapport table  th{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+.print{
+  position: relative;
+  left: 25%;
+  font-size: 1.3em;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  transition: 0.2s;
+
+
+}
+.print i{
+  background-color: #ffff;
+  border: none;
+  font-size: 1em;
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2), -2px -2px 8px rgba(0, 0, 0, 0.2);
+
+
+}
+
+.print:hover{
+  transform: scale(1.1);
+}
+.name_rapport{
+  background-color: #ffff !important;
+
+  /* box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2), -2px -2px 8px rgba(0, 0, 0, 0.2) !important; */
+
+}

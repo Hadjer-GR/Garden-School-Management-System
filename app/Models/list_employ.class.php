@@ -26,7 +26,6 @@ class list_employ{
 
 
 
-
     public function __construct()
     {
         $this->db=new Database();
@@ -154,11 +153,6 @@ public function get_nbr_have_pay($month_nbr,$year_nbr,$year_id){
   $this->db->bind_Value(3,$year_nbr,null); 
   $all_have=$this->db->fetchAll();  
   return $all_have;
-
-
-
-
-
 
 }
 
