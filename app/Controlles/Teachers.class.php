@@ -58,7 +58,7 @@ class Teachers extends Controllers{
  // add teacher 
  
          $f_name=$_POST['f_name'];
-         $l_name=(int)$_POST['l_name'];
+         $l_name=$_POST['l_name'];
          $price=$_POST['price'];
          $job=$_POST['job'];
          $numero=$_POST["number"];

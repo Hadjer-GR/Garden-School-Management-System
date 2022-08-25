@@ -29,9 +29,9 @@
   <div class="searchsection">
         
       
-    <form action="<?php echo URLROOT ;?>list_students/search" accept-charset="UTF-8" method="post">
+    <form action="<?php echo URLROOT ;?>list_students/search_student" accept-charset="UTF-8" method="post">
         <div class="searchbar">
-            <input type="text" class="searchbar__input" id="materiel" name="search_materiel" placeholder=" اللقب " dir="rtl">
+            <input type="text" class="searchbar__input" id="materiel" name="search" placeholder=" اللقب " dir="rtl">
             <button type="submit" class="searchbar__button" id="btnsearch">
                 <i class='bx bx-search'>ابحث</i>
             </button>
@@ -65,7 +65,7 @@
 
         <tr>
         <td><c:out value="" /><?php echo $student[$i]->l_name." ".$student[$i]->f_name ?> </td>
-        <td class="btndelete"><a href="<?php echo URLROOT ;?>list_students/edite?student_id=<?php echo $student[$i]->id ?>" class=" trash" style="color:#AC1C68;"><i class='bx bxs-edit-alt'></i></a></td>
+        <td class="btndelete"><a href="<?php echo URLROOT ;?>list_students/edite?student_id=<?php echo $student[$i]->id ?>" class=" trash" style="color:#f6c038;"><i class='bx bxs-edit-alt'></i></a></td>
         <td class="btndelete"><a href="<?php echo URLROOT ;?>list_students/add_class?student_id=<?php echo $student[$i]->id ?>" class=" trash" style="color:#21CBAE;"><i class='bx bxs-customize'></i></a></td>
         <td class="btndelete"><a href="<?php echo URLROOT ;?>list_students/degree?student_id=<?php echo $student[$i]->id ?>" class=" trash" style="color:black;"><i class='bx bxs-graduation'></i></a></td>
         <td class="btndelete"><a href="<?php echo URLROOT ;?>list_students/detail?student_id=<?php echo $student[$i]->id ?>" class=" trash" style="color:#1C94AC;"><i class='bx bxs-receipt'></i></a></td>

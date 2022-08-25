@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +50,7 @@
       <div class="headermobile">
           <i class='bx bx-menu togglemenu'></i>
 
-          <div class="text texthome">تسجيل</div>
+          <div class="text texthome">السجل</div>
       </div>
 
       <?php if(isset($msg[0]) && $msg[0]!="error"){
@@ -92,11 +93,15 @@
    
   </div>
 </div>
- 
+<div class="titlenote">
+            <a href="<?php echo URLROOT ;?>list_employes" class="btnleft"> <i class='bx bx-reply'></i>
+            </a>
+  <span>الغاء</span>
+    </div>
 <br><br>
   <div class="titleform">
 
-  <h2 class="addperson">تسجيل العمال</h2>
+  <h2 class="addperson"> تعديل بيانات العامل (ة)</h2>
 
   </div>
     
@@ -106,35 +111,41 @@
 
             <!-- fomullaire-->
           <div class="student">
-            <form action="<?php echo URLROOT ;?>Teachers/add" method="post" dir="rtl">
+            <form action="<?php echo URLROOT ;?>list_employes/update" method="post" dir="rtl">
                   <div class="contentstudent">
-
+              <input type="hidden" name="id" value="<?php echo $msg[1][0]->id;?>">
                 
                 <div class="user-input1">
                     <label>الاسم</label>
-                   <input type="text" required name="f_name" placeholder="  اسم الموظف  ">     
+                   <input type="text" required name="f_name"  value="<?php echo $msg[1][0]->f_name;?>" placeholder="  اسم الموظف  ">     
                   </div>
                   <div class="user-input2">
                     <label>اللقب</label>
-                   <input type="text" required name="l_name" placeholder="  اللقب الموظف ">     
+                   <input type="text" required name="l_name"  value="<?php echo $msg[1][0]->l_name;?>" placeholder="  اللقب الموظف ">     
                   </div>
          
                   <div class="user-input4">
                     <label>رقم الهاتف</label>
-                   <input type="text" required name="number" placeholder="  رقم هاتف الموظف ">     
+                   <input type="text" required name="number"  value="<?php echo $msg[1][0]->nbr;?>" placeholder="  رقم هاتف الموظف ">     
                   </div>
  
                   <div class="user-input4">
                     <label>المبلغ الشهري </label>
-                   <input type="number" required name="price" step="0.001" placeholder="    المبلغ الشهري ">     
+                   <input type="number" required name="price"  value="<?php echo $msg[1][0]->price;?>" step="0.001" placeholder="    المبلغ الشهري ">     
                   </div>
  
                 
                   <div class="user-input" placeholder="">
                     <label>المهنة    </label>
                    <select name="job" required> 
-                    <option value=" (ة) استاذ">  استاذ(ة)</option>
-                    <option value=" عامل مهني">عامل مهني   </option>
+                    <option value=" (ة) استاذ"  <?php 
+                    if($msg[1][0]->job ==" (ة) استاذ" ){
+                    
+                    echo"selected";}?>>  استاذ(ة)</option>
+                    <option value=" عامل مهني" <?php 
+                    if($msg[1][0]->job ==" عامل مهني" ){
+                    
+                    echo"selected";}?>>عامل مهني   </option>
 
                     </select>     
                   </div>
@@ -143,7 +154,7 @@
                  
                 </div>
                   <div class="submit">
-                    <input type="submit" value="اظافة">
+                    <input type="submit" value="تعديل">
                   </div>
 
             </form>

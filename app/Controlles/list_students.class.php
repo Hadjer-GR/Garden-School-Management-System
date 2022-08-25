@@ -301,9 +301,39 @@ public function inscript(){
 }
 
 
+/*
+*   search
+*
+*
+*/
+
+public function search_student(){
+
+  if (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_SESSION["user_id"])) {
+
+    $search=$_POST["search"];
+
+    if($search !=""){
+      $search_input="%".$search."%";
+      $all_student=$this->list_studentModel->search_student($search_input);
+      $msg[3]=$all_student;
+  
+      $this->postview=$this->view("admin/list_student","list_student",$msg);
+
+    }else{
+      redirect("list_students");
+    }
 
 
 
+
+
+
+
+  }else{
+    redirect("");
+  }
+}
 
 
 
