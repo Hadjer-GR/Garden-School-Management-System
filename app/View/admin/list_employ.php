@@ -137,7 +137,8 @@
                 <?php  if(isset($msg[3])){
         $employ=$msg[3];
             for ($i=0; $i <sizeof($employ) ; $i++) { 
-                # code...
+                # code..
+                $k=0;
           
         ?>
 
@@ -147,9 +148,30 @@
         
       
         <td class="btndelete"><a href="<?php echo URLROOT ;?>list_employes/edite?id=<?php echo $employ[$i]->id; ?>" class=" trash" style="color:#f6c038;"><i class='bx bxs-edit-alt'></i></a></td>
-        <td class="btndelete"><c:out value="" /><a href="<?php echo URLROOT ;?>list_employes/pay?id=<?php echo $employ[$i]->id; ?>" style="color: green;"> <i class='bx bxs-user-check' ></i> </a> <span></span></td>
 
-       <td class="btndelete"><a href="<?php echo URLROOT ;?>list_employes/list_pay?id=<?php echo $employ[$i]->id; ?>" class=" trash" style="color:#1C94AC;"><i class='bx bxs-receipt'></i></a></td>
+
+
+
+        <?php for ($j=0; $j < sizeof($msg[4]); $j++) { 
+        if($msg[4][$j]->id == $employ[$i]->id){
+             $k=1;
+            ?>
+
+        <td class="btndelete"><c:out value="" /><a style="color: green;"> <i class='bx bxs-user-check' ></i> </a> <span></span></td>
+
+    <?php }} if($k==0){?>
+      <td class="btndelete"><c:out value="" /><a href="<?php echo URLROOT ;?>list_employes/pay_month?id=<?php echo $employ[$i]->id; ?>" style="color: red;"> <i class='bx bxs-user-x' ></i> </a> <span></span></td>
+
+
+
+
+<?php }?>
+
+
+
+
+
+        <td class="btndelete"><a href="<?php echo URLROOT ;?>list_employes/list_pay?id=<?php echo $employ[$i]->id; ?>" class=" trash" style="color:#1C94AC;"><i class='bx bxs-receipt'></i></a></td>
         <td class="btndelete"><a href="<?php echo URLROOT ;?>list_employes/delete?id=<?php echo $employ[$i]->id; ?>" class=" trash"><i class='bx bx-trash'></i></a></td>
         
         </tr>

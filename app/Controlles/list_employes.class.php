@@ -24,7 +24,20 @@ public function index(){
 
        $all_employ=  $this->list_employModel->get_all_employ();
        $msg[3]=$all_employ;
-        $this->postview=$this->view("admin/list_employ","list_employ",$msg);
+       
+/*
+*
+* give the employ whe not get thiere salery this month yet
+*
+*/
+$month_nbr=date("m");
+$year_nbr=date("Y");
+$year_id=$_SESSION["id_year_scolaire"];
+// get all id of employ who gets theire salory this month
+$all_have= $this->list_employModel->get_nbr_have_pay($month_nbr,$year_nbr,$year_id);
+$msg[4]=$all_have;
+
+ $this->postview=$this->view("admin/list_employ","list_employ",$msg);
 
 
     }else{
@@ -143,8 +156,16 @@ public function view_employ(){
 
   if(isset($_SESSION["list"])){
     $msg[0]=$_SESSION["list"];
+    $month_nbr=date("m");
+     $year_nbr=date("Y");
+     $year_id=$_SESSION["id_year_scolaire"];
     $all_employ=  $this->list_employModel->get_all_employ();
     $msg[3]=$all_employ;
+    $all_have= $this->list_employModel->get_nbr_have_pay($month_nbr,$year_nbr,$year_id);
+    $msg[4]=$all_have;
+
+ $this->postview=$this->view("admin/list_employ","list_employ",$msg);
+
      $this->postview=$this->view("admin/list_employ","list_employ",$msg);
      $_SESSION["list"]=null;
   }else{
@@ -170,7 +191,11 @@ public function search_employ(){
    $search_input="%".$search."%";
     $all_employ= $this->list_employModel->search_employ($search_input);
     $msg[3]=$all_employ;
-    var_dump($all_employ);
+    $month_nbr=date("m");
+    $year_nbr=date("Y");
+    $year_id=$_SESSION["id_year_scolaire"];
+    $all_have= $this->list_employModel->get_nbr_have_pay($month_nbr,$year_nbr,$year_id);
+    $msg[4]=$all_have;
     $this->postview=$this->view("admin/list_employ","list_employ",$msg);
     }else{
       redirect("list_employes");
@@ -179,6 +204,38 @@ public function search_employ(){
     redirect("");
   }
 }
+
+
+/*
+*
+* give  employes theire salery this month
+*
+*/
+
+public function pay_month(){
+  if (($_SERVER['REQUEST_METHOD'] == 'GET') && isset($_SESSION["user_id"])) {
+
+    $employ_id=$_GET["id"];
+    $month_nbr=date("m");
+    $year_nbr=date("Y");
+    $year_id=$_SESSION["id_year_scolaire"];
+
+    $this->list_employModel->pay_month($month_nbr,$year_nbr,$employ_id,$year_id);
+
+     redirect("list_employes");
+
+  }else{
+    redirect("");
+  }
+
+}
+
+
+
+
+
+
+
 
 
 }

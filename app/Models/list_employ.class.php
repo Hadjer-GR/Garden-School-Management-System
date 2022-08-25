@@ -10,7 +10,23 @@ class list_employ{
 
  private $update_employ="update ".DB_NAME.".teacher set f_name=?,l_name=?,price=?,nbr=?,job=? where id=?;";
  private $delete_employ='update '.DB_NAME.'.teacher set work="no" where id=?;';
- private $search_employ='select id,f_name,l_name,job from '.DB_NAME.'.teacher where l_name like ? and work="yes";';   
+ private $search_employ='select id,f_name,l_name,job from '.DB_NAME.'.teacher where l_name like ? and work="yes";'; 
+ 
+ private $pay_month="insert into database_aouetef.teacher_month(month_n,year_nbr,teacher_id,year_id)values(?,?,?,?);
+ ";
+
+ private $get_nbr_have_pay="select distinct ".DB_NAME.".teacher.id from database_aouetef.teacher 
+
+ left join ".DB_NAME.".teacher_month
+ on ".DB_NAME.".teacher_month.teacher_id=".DB_NAME.".teacher.id
+ where ".DB_NAME.".teacher_month.year_id=? and ".DB_NAME.".teacher_month.month_n=? and ".DB_NAME.".teacher_month.year_nbr=?;";
+
+
+
+
+
+
+
     public function __construct()
     {
         $this->db=new Database();
@@ -106,7 +122,45 @@ public function search_employ($search){
   }
 
 
+/*
+*
+* give the employ they are salery
+*
+*/
 
+
+public function pay_month($month_nbr,$year_nbr,$teacher_id,$year_id){
+
+  $this->db->preparedstmt($this->pay_month);
+  $this->db->bind_Value(1,$month_nbr,null);
+  $this->db->bind_Value(2,$year_nbr,null);
+  $this->db->bind_Value(3,$teacher_id,null);
+  $this->db->bind_Value(4,$year_id,null);
+  $this->db->executeQuery();
+}
+
+/*
+*
+* get nbr of employes who don't get thiere salery yet in this month
+*
+*/
+
+
+public function get_nbr_have_pay($month_nbr,$year_nbr,$year_id){
+
+  $this->db->preparedstmt($this->get_nbr_have_pay);
+  $this->db->bind_Value(1,$year_id,null);
+  $this->db->bind_Value(2,$month_nbr,null);
+  $this->db->bind_Value(3,$year_nbr,null); 
+  $all_have=$this->db->fetchAll();  
+  return $all_have;
+
+
+
+
+
+
+}
 
 
 
