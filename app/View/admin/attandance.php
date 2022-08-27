@@ -56,7 +56,7 @@ for ($i=0; $i < sizeof($all_class); $i++) {
 <p><span>
 اسم الاستاذ (ة ):
 </span>
-<span> <?php echo $all_class[$i]->f_name.$all_class[$i]->l_name?>  </span></p>
+<span> <?php echo $all_class[$i]->f_name." ".$all_class[$i]->l_name?>  </span></p>
 <br>
 
 

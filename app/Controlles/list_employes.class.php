@@ -220,10 +220,11 @@ public function pay_month(){
     $year_nbr=date("Y");
     $year_id=$_SESSION["id_year_scolaire"];
 
+   
     $this->list_employModel->pay_month($month_nbr,$year_nbr,$employ_id,$year_id);
 
      redirect("list_employes");
-
+    
   }else{
     redirect("");
   }
@@ -246,6 +247,74 @@ public function work(){
     redirect("");
   }
 }
+
+
+/*
+*
+* rapport
+*
+*/
+
+
+public function rapport(){
+  if (($_SERVER['REQUEST_METHOD'] == 'GET') && isset($_SESSION["user_id"])) {
+
+       $teacher_id=$_GET["id"];
+//1. rapport teacher 
+      $teacher_rapport=$this->list_employModel->teacher_rapport($teacher_id);
+      $msg[0]=$teacher_rapport;
+
+// 2. teacher name 
+
+    $name=$this->list_employModel->teacher_name($teacher_id);
+
+    $msg[1]=$name;
+    $this->postview=$this->view("admin/rapport_teacher","list_teacher",$msg);
+
+
+  }else{
+    redirect("");
+  }
+}
+
+
+/*
+* pay to the employ after see rapport
+*
+*
+*/
+
+
+public function rapport_pay(){
+
+
+//0. pay month for employe
+  $employ_id=$_GET["id"];;
+  $month_nbr=date("m");
+  $year_nbr=date("Y");
+  $year_id=$_SESSION["id_year_scolaire"];
+
+ 
+  $this->list_employModel->pay_month($month_nbr,$year_nbr,$employ_id,$year_id);
+
+//1. rapport teacher 
+$teacher_rapport=$this->list_employModel->teacher_rapport( $employ_id);
+$msg[0]=$teacher_rapport;
+
+// 2. teacher name 
+
+$name=$this->list_employModel->teacher_name( $employ_id);
+
+$msg[1]=$name;
+$this->postview=$this->view("admin/rapport_teacher","list_teacher",$msg);
+
+
+
+}
+
+
+
+
 
 
 

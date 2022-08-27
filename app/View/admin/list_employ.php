@@ -201,7 +201,7 @@
   <?php } ?>
 
 
-        <td class="btndelete"><a href="<?php echo URLROOT ;?>list_employes/list_pay?id=<?php echo $employ[$i]->id; ?>" class=" trash" style="color:#1C94AC;"><i class='bx bxs-receipt'></i></a></td>
+        <td class="btndelete"><a href="<?php echo URLROOT ;?>list_employes/rapport?id=<?php echo $employ[$i]->id; ?>" class=" trash" style="color:#1C94AC;"><i class='bx bxs-receipt'></i></a></td>
         <td class="btndelete"><a href="<?php echo URLROOT ;?>list_employes/delete?id=<?php echo $employ[$i]->id; ?>" class=" trash"><i class='bx bx-trash'></i></a></td>
         
         </tr>
