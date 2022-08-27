@@ -33,11 +33,11 @@ public function index(){
 $month_nbr=date("m");
 $year_nbr=date("Y");
 $year_id=$_SESSION["id_year_scolaire"];
-// get all id of employ who gets theire salory this month
-$all_have= $this->list_employModel->get_nbr_have_pay($month_nbr,$year_nbr,$year_id);
-$msg[4]=$all_have;
-
- $this->postview=$this->view("admin/list_employ","list_employ",$msg);
+// get all id of employ who gets theire salory this month and who work this month
+      $list_work= $this->list_employModel->list_work($month_nbr,$year_nbr);
+       $msg[4]=$list_work;
+  
+$this->postview=$this->view("admin/list_employ","list_employ",$msg);
 
 
     }else{
@@ -161,8 +161,8 @@ public function view_employ(){
      $year_id=$_SESSION["id_year_scolaire"];
     $all_employ=  $this->list_employModel->get_all_employ();
     $msg[3]=$all_employ;
-    $all_have= $this->list_employModel->get_nbr_have_pay($month_nbr,$year_nbr,$year_id);
-    $msg[4]=$all_have;
+    $list_work= $this->list_employModel->list_work($month_nbr,$year_nbr);
+    $msg[4]=$list_work;
 
  $this->postview=$this->view("admin/list_employ","list_employ",$msg);
 
@@ -231,7 +231,21 @@ public function pay_month(){
 }
 
 
+public function work(){
+  if (($_SERVER['REQUEST_METHOD'] == 'GET') && isset($_SESSION["user_id"])) {
 
+
+    $employ_id=$_GET["id"];
+    $date_w=date("Y")."-".date("m")."-".date("d");
+
+    $this->list_employModel->satr_work($employ_id,$date_w);
+    redirect("list_employes");
+
+
+  }else{
+    redirect("");
+  }
+}
 
 
 

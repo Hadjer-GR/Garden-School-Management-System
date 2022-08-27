@@ -124,6 +124,7 @@
                         <th>العامل (ة) </th>
                         <th> المهنة    </th>
                         <th> تعديل </th>
+                        <th> العمل </th>
                         <th>الاجرة</th> 
                          <th>التقرير</th> 
                         <th> حذف  </th>
@@ -138,7 +139,7 @@
         $employ=$msg[3];
             for ($i=0; $i <sizeof($employ) ; $i++) { 
                 # code..
-                $k=0;
+              
           
         ?>
 
@@ -147,13 +148,40 @@
         <td><c:out value="" /><?php echo $employ[$i]->job; ?></td>
         
       
-        <td class="btndelete"><a href="<?php echo URLROOT ;?>list_employes/edite?id=<?php echo $employ[$i]->id; ?>" class=" trash" style="color:#f6c038;"><i class='bx bxs-edit-alt'></i></a></td>
+        <td class="btndelete"><a href="<?php echo URLROOT ;?>list_employes/edite?id=<?php echo $employ[$i]->id; ?>" class=" trash" style="color:#f6c038;"><i class='bx bxs-edit'></i></a></td>
 
 
 
+     
+        <?php
+         if(isset($msg[4])){
+         
+          $d=0;
+        for ($j=0; $j < sizeof($msg[4]); $j++) { 
+        if($msg[4][$j]->teacher_id == $employ[$i]->id ){
+             $d=1;
+            ?>
 
-        <?php for ($j=0; $j < sizeof($msg[4]); $j++) { 
-        if($msg[4][$j]->id == $employ[$i]->id){
+        <td class="btndelete"><c:out value="" /><a style="color:#1C94AC;"><i class='bx bxs-check-square'></i></a> <span></span></td>
+
+    <?php }} if($d==0){?>
+      <td class="btndelete"><a href="<?php echo URLROOT ;?>list_employes/work?id=<?php echo $employ[$i]->id; ?>" class=" trash" style="color:#1C94AC;"><i class='bx bxs-briefcase'></i></a></td>
+          
+
+
+
+<?php  }}else{?>
+  <td class="btndelete"><a href="<?php echo URLROOT ;?>list_employes/work?id=<?php echo $employ[$i]->id; ?>" class=" trash" style="color:#1C94AC;"><i class='bx bxs-briefcase'></i></a></td>
+
+
+    <?php } ?>
+
+
+
+        <?php  if(isset($msg[4])){
+           $k=0;
+         for ($j=0; $j < sizeof($msg[4]); $j++) { 
+        if($msg[4][$j]->teacher_id == $employ[$i]->id &&$msg[4][$j]->is_pay=="yes" ){
              $k=1;
             ?>
 
@@ -165,10 +193,12 @@
 
 
 
-<?php }?>
+<?php }}else{
+  ?>
 
+<td class="btndelete"><c:out value="" /><a href="<?php echo URLROOT ;?>list_employes/pay_month?id=<?php echo $employ[$i]->id; ?>" style="color: red;"> <i class='bx bxs-user-x' ></i> </a> <span></span></td>
 
-
+  <?php } ?>
 
 
         <td class="btndelete"><a href="<?php echo URLROOT ;?>list_employes/list_pay?id=<?php echo $employ[$i]->id; ?>" class=" trash" style="color:#1C94AC;"><i class='bx bxs-receipt'></i></a></td>

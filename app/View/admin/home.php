@@ -26,7 +26,11 @@
      
 
 <section class="home">
+<div class="headermobile">
+          <i class='bx bx-menu togglemenu'></i>
 
+          <div class="text texthome">الرئيسية</div>
+      </div>
 <div class="mainindex">
             <div class="etud1 bigchart">
                 <h2>التقرير  السنوي</h2>
@@ -65,9 +69,7 @@
 
         </div>
 
-
-
-
 </section>
+
     </body>
 </html>

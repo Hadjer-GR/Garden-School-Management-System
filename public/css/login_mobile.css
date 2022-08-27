@@ -1,17 +1,22 @@
+
 .loginn {
     display: flex !important;
     flex-direction: column;
+    width: 80vw !important;
+   
+    margin-top: 10vh !important;
+    height: 60vh !important;
   }
+  
   .container {
-    width: 100% !important;
-    height: 30% !important;
+    width: 100vw !important;
+    height: 100vh !important;
     border-right: 2px solid white !important;
   }
   .main-container {
-    width: 100%;
-    margin-top: 5px !important;
-  
-    height: 90% !important;
+    width: 80vw !important;
+    margin-top: 10px;
+    height: 60vh !important;
   }
   .main-container h2 {
     text-align: center;

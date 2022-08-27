@@ -700,3 +700,6 @@
 .searchbar__button {
   width: 30% !important;
 }
+.contentbox .box{
+  margin-bottom: 20px !important;
+}

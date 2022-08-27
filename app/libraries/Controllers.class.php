@@ -3,7 +3,7 @@
 class Controllers{
 
 public function model($model){
-  require_once "../app/Models/".ucwords($model).".class.php";
+  require_once "../app/Models/".$model.".class.php";
   return new $model;
 }
 public function view($view,$data=[],$msg=[]){

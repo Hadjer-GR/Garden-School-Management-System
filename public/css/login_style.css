@@ -4,16 +4,7 @@
     box-sizing: border-box;
   }
   
-  /* design login page  */
-  body {
-    background-image: url(../image/loginin.jpg);
-  
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    background-size: cover;
-    background-position: left;
-  }
+ 
   .loginn {
     position: relative;
     background-color: white;

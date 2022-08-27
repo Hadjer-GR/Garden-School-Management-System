@@ -15,15 +15,11 @@ class list_employ{
  private $pay_month="insert into database_aouetef.teacher_month(month_n,year_nbr,teacher_id,year_id)values(?,?,?,?);
  ";
 
- private $get_nbr_have_pay="select distinct ".DB_NAME.".teacher.id from database_aouetef.teacher 
-
- left join ".DB_NAME.".teacher_month
- on ".DB_NAME.".teacher_month.teacher_id=".DB_NAME.".teacher.id
- where ".DB_NAME.".teacher_month.year_id=? and ".DB_NAME.".teacher_month.month_n=? and ".DB_NAME.".teacher_month.year_nbr=?;";
+ 
 
 
-
-
+ private $start_work="insert into ".DB_NAME.".rapport_teacher(teacher_id,date_t)values(?,?);";
+private $list_work="select teacher_id,is_pay from ".DB_NAME.".rapport_teacher where month(date_t)=? and year(date_t)=?;";
 
 
     public function __construct()
@@ -156,7 +152,40 @@ public function get_nbr_have_pay($month_nbr,$year_nbr,$year_id){
 
 }
 
+/*
+  *
+  *  this teacher or employ start this months work
+  */
 
+   
+  public function satr_work($teacher_id,$date_w){
+
+      $this->db->preparedstmt($this->start_work);
+      $this->db->bind_Value(1,$teacher_id,null);
+      $this->db->bind_Value(2,$date_w,null);
+
+      $this->db->executeQuery();
+    
+  }
+
+
+  
+/*
+  *
+  *  list all the Employes work this months
+  */
+
+   
+  public function list_work($month_nbr,$year_nbr){
+
+    $this->db->preparedstmt($this->list_work);
+    $this->db->bind_Value(1,$month_nbr,null);
+    $this->db->bind_Value(2,$year_nbr,null);
+    
+    $list_work= $this->db->fetchAll();
+    return $list_work;
+  
+}
 
 
 
