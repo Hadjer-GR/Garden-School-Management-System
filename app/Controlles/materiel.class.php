@@ -52,5 +52,21 @@ class materiel extends Controllers{
 
  }
 
+public function materielAdd(){
+
+    if(isset($_SESSION["user_id"])){
+        echo"hadjer good job";
+  
+  
+  
+  
+      }else{
+          redirect("");
+      }
+
+
+}
+
+
 
 }

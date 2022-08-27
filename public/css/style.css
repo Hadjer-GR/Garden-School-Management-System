@@ -631,7 +631,7 @@ body.dark .home .text {
 }
 .holder .holde1 a {
   text-decoration: none;
-  color:#1f1919d8;
+  color:var(--clr-gray500);
 }
 .holder .holde1 a:hover {
   font-size: 1.25em;
@@ -644,7 +644,7 @@ body.dark .home .text {
   font-size: 30px;
   margin-left: 45px;
   top: 5px;
-  color:#1f1919;
+  color:var(--clr-gray500);
 }
 
 
@@ -1934,12 +1934,13 @@ form .btn button {
   height: 100%;
   background: none;
   border: none;
-  color: #fff;
+  color: black;
   font-size: 1.2em;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
+  background-color: var(--primary-color);
 }
 form .btn button:hover {
   transform: scale(1.1);

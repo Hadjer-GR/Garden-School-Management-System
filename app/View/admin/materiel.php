@@ -25,6 +25,7 @@
                 <div class="holde1 note">
                     <a href="<?php echo URLROOT ;?>materiel/addMateriel">&nbsp;اظافة مقتنيات&nbsp;&nbsp; <br>
                         <i class='bx bx-briefcase-alt-2'></i></a>
+                        <br>
 
                 </div>
                 <div class=" holde1 note">
