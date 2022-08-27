@@ -2,10 +2,7 @@
 
 
 class Database{
-private $host="localhost";
-private $user=DB_USER;
-private $password=DB_PASSWORD;
-private $db_name=DB_NAME;
+
 
 private $mycon;
 private $stmt;
@@ -20,8 +17,8 @@ public function __construct()
 {
         // dsn :data source name
   try{
-    $dsn="mysql:host=".$this->host.";dbname=".$this->db_name;
-   $this->mycon=new PDO($dsn,$this->user,$this->password,$this->option);
+    $dsn="mysql:host=".DB_HOST.";dbname=".DB_NAME;
+   $this->mycon=new PDO($dsn,DB_USER,DB_PASSWORD,$this->option);
   }catch(PDOException $e){
       die("faild connection to data base ".$e->getMessage());
   }

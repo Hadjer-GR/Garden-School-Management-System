@@ -61,7 +61,7 @@ class Core{
 
 
 public function check_control($control){
-   $list_Controller=["Users","Teachers","Students","sections","Showclasses","list_employes","list_students","attandances"];
+   $list_Controller=["Users","Teachers","Students","sections","Showclasses","list_employes","list_students","attandances","materiel"];
    $nbr=sizeof($list_Controller);
 
 for ($i=0; $i <$nbr ; $i++) { 

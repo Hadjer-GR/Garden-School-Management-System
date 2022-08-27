@@ -275,9 +275,19 @@
 
                     </div>
 
-                    <li class="nav-link ">
+                    <li class="nav-link <?php  
+                        if(isset($data)){
+                            if($data =="materiel"){
+  
+                        ?>
+                            hover  
 
-                        <a href="#">
+                            <?php
+                              }
+                        }
+                        ?>">
+
+                        <a href="<?php echo URLROOT; ?>materiel">
 
                             <i class='bx bx-grid icon '></i>
 
