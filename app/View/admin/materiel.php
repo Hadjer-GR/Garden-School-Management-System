@@ -31,12 +31,12 @@
                 <div class=" holde1 note">
                     <a href="<%=request.getContextPath()%>/SearchlistMateriel">&nbsp;&nbsp;سجل المقتنيات &nbsp;&nbsp; <br>
                         <i class='bx bx-receipt'></i></a> </div>
-                <div class="holde1 textbook">
-                    <a href="#"> &nbsp;&nbsp;السعر الاجمالي <br>
+                <div class="holde1 textbook" >
+                    <a href="#" > &nbsp;&nbsp;السعر الاجمالي <br>
 
                         <div class="price">
                             <span><c:out value="${prix }" /></span>
-                            <span> &nbsp;&nbsp;DA </span>
+                            <span style="color: #161d34 !important;"> &nbsp;&nbsp;DA </span>
 
                         </div>
                     </a>

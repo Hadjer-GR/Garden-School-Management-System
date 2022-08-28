@@ -631,7 +631,7 @@ body.dark .home .text {
 }
 .holder .holde1 a {
   text-decoration: none;
-  color:var(--clr-gray500);
+  color:#695cfe;
 }
 .holder .holde1 a:hover {
   font-size: 1.25em;
@@ -644,7 +644,7 @@ body.dark .home .text {
   font-size: 30px;
   margin-left: 45px;
   top: 5px;
-  color:var(--clr-gray500);
+  color:var(--clr-gray700);
 }
 
 
@@ -2074,7 +2074,7 @@ form .signup-link a:hover {
 
 .card .additional .stats div.value {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: bold ;
   line-height: 1.5rem;
 }
 
