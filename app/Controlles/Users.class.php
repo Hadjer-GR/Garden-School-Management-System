@@ -42,8 +42,18 @@ class Users extends Controllers{
         $_SESSION['id_year_scolaire']= $id_year_scolaire ;
 
       }
+//2. verifie rapport date_t
+    $month=date("m");
+    $year_nbr=date("Y");
+    $date=date("Y")."-".date("m")."-".date("d");
+    $date_t=$this->Usermodel->verfie_rapport($month,$year_nbr);
 
-        $this->postView= $this->view("admin/home");
+    if(isset($date_t) && $date_t ==""){
+      $this->Usermodel->insert_rapport($date);
+    }
+    
+
+    $this->postView= $this->view("admin/home");
 
        }else{
     $data=true;

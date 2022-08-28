@@ -631,7 +631,7 @@ body.dark .home .text {
 }
 .holder .holde1 a {
   text-decoration: none;
-  color:#695cfe;
+  color:var(--clr-gray700);
 }
 .holder .holde1 a:hover {
   font-size: 1.25em;
@@ -1694,6 +1694,7 @@ form .button input:hover {
   width: 95%;
   height: 500px;
   margin-left: auto;
+  
   margin-right: auto;
   overflow-y: hidden;
 }
@@ -1704,6 +1705,7 @@ form .button input:hover {
   background-color: white;
   text-align: left;
   width: 100%;
+  overflow-y: scroll;
   height: auto;
   font-size: 1.2em;
 }

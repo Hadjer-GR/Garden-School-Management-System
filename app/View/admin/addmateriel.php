@@ -156,20 +156,20 @@
                         
             <div class="data">
                 <label>اسم المنتج  </label>
-                <input type="text" dir="rtl" required id="name_materiel2"  value="">
+                <input type="text" dir="rtl"  name="name"required id="name_materiel2"  value="<?php  echo $msg[2][0]->name?>">
             </div>
             <div class="data">
                 <label>الكمية  </label>
-                <input type="number"  required id="nbr2" value="" placeholder="" >
+                <input type="number"  required name="nbr" id="nbr2" value="<?php  echo $msg[2][0]->nbr?>" placeholder="" >
             </div>
             <div class="data">
                 <label>السعر </label>
-                <input type="number" step="0.01"   required id="prix2"  value=""  placeholder="" >
+                <input type="number" step="0.01"  name="price" required id="prix2"  value="<?php  echo $msg[2][0]->price;?>"  placeholder="" >
             </div>
-
+         <input type="hidden" name="id" value="<?php  echo $msg[2][0]->id?>">
             <div class="btn">
                 <div class="inner"></div>
-                <button type="submit" onclick="editeMateriel()">حفظ</button>
+                <button type="submit" >حفظ</button>
             </div>
            
 

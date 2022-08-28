@@ -14,6 +14,11 @@ class User
 private $get_study_year="select id  from ".DB_NAME.".yearscolaire where  start_y <= ? and end_y > ?;
 ";
 
+//  set  rapport table 
+   private $verifie_rapport="select date_t from ".DB_NAME.".rapport_spending where month(date_t)=? and year(date_t)=?;
+   ";
+
+   private $insert_rapport="insert into ".DB_NAME.".rapport_spending (date_t)values(?);";
 
 
 
@@ -58,7 +63,6 @@ public function get_study_year(){
       $this->db->bind_Value(5, $date, null);
       $this->db->bind_Value(6, $gener, null);
       $this->db->executeQuery();
-      $this->db->endconnect();
    }
 
 
@@ -77,6 +81,53 @@ public function get_study_year(){
       } else {
          return 0;
       }
-      $this->db->endconnect();
+     
    }
+
+
+/**
+ * verfie if the rapprt table has been sate the date or not
+ * 
+ */
+
+
+public function verfie_rapport($month,$year_nbr){
+
+   $this->db->preparedstmt($this->verifie_rapport);
+   $this->db->bind_Value(1, $month, null);
+   $this->db->bind_Value(2, $year_nbr, null);
+
+
+    $date= $this->db->fetch();
+       return $date;
+
+
+
+}
+
+
+/**
+ * verfie if the rapprt table has been set the date or not
+ * 
+ */
+
+
+public function insert_rapport($date_t){
+
+   $this->db->preparedstmt($this->insert_rapport);
+   $this->db->bind_Value(1, $date_t, null);
+   $this->db->executeQuery();
+
+}
+
+
+
+
+
+
+
+
+
+
+
 }
