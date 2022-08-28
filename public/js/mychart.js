@@ -1,90 +1,12 @@
 
 
-
-// design doughnut
-let label1 = ["المداخيل ","المصاريف"];
-let data1 = [60, 20];
-let colors1 = [ "#FF3386","#398BD4"];
-
-const mychart1 = document.querySelectorAll("#myChart");
-
-mychart1.forEach((item) => {
-  const myChart11 = new Chart(item.getContext("2d"), {
-    type: "doughnut",
-    data: {
-      labels: label1,
-      datasets: [
-        {
-          data: data1,
-          backgroundColor: colors1,
-          hoverBackgroundColor: colors1,
-          borderColor: "#ffff",
-          borderWidth: 4,
-        },
-      ],
-    },
-    options: {
-      title: {
-        text: " التقرير الشهري ",
-        display: true,
-      },
-      aspectRatio: 2.1,
-    },
-  });
-});
-
-// line chart 
-
-var ctx=document.getElementById("lineChart");
-
-
-  const labels = [
-    'جانفي',
-    'فيفري',
-    'مارس',
-    'افريل',
-    'ماي',
-    'جوان',
-    'جويلية',
-    'اوت',
-    'سبتمبر',
-    'اكتوبر',
-    'نوفمبر',
-    'ديسمبر',
-  ];
-
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: "المداخيل",
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [220000, 80000,150000,200000,30000],
-    },{
-        label: "المصاريف",
-        backgroundColor: '#2375BD',
-      borderColor: '#2375BD',
-        data: [22222, 800000,70000,600000],
-      }]
-  };
  
 
-  const config = {
-    type: 'line',
-    data: data,
-    options: {
-      title: {
-        text: " التقرير الشهري ",
-        display: true,
-      },
-      aspectRatio: 2.3,
-    },
-  };
+ 
+ const income =document.getElementById("income");
+   console.log(income);
 
-  const myChart = new Chart(
-    document.getElementById('lineChart').getContext('2d'),
-    config
-  );
+
 
   /*
   *
@@ -103,7 +25,7 @@ var ctx=document.getElementById("lineChart");
     ],
     datasets: [{
       label: 'My First Dataset',
-      data: [11, 16, 7, 3, 14],
+      data: [income, 16, 7, 3, 14],
       backgroundColor: [
         'rgb(255, 99, 132)',
         'rgb(75, 192, 192)',

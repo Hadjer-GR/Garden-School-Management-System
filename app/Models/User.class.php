@@ -20,8 +20,8 @@ private $get_study_year="select id  from ".DB_NAME.".yearscolaire where  start_y
 
    private $insert_rapport="insert into ".DB_NAME.".rapport_spending (date_t)values(?);";
 
-
-
+   private $rapport="select * from ".DB_NAME.".rapport_spending order by date_t;";
+   private $rapport_month="select * from ".DB_NAME.".rapport_spending where month(date_t)=? and year(date_t)=?;";
 
 
    public function __construct()
@@ -124,6 +124,45 @@ public function insert_rapport($date_t){
 
 
 
+
+/**
+ *  get rapport_spending
+ * 
+ */
+
+
+public function rapport(){
+
+   $this->db->preparedstmt($this->rapport);
+  
+
+    $rapport= $this->db->fetchAll();
+       return $rapport;
+
+
+
+}
+
+
+/**
+ *  get rapport_spending this month
+ * 
+ */
+
+
+public function rapport_month($month,$year){
+
+   $this->db->preparedstmt($this->rapport_month);
+  
+   $this->db->bind_Value(1, $month, null);
+   $this->db->bind_Value(2, $year, null);
+
+    $rapport= $this->db->fetch();
+       return $rapport;
+
+
+
+}
 
 
 

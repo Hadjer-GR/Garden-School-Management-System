@@ -9,8 +9,8 @@ class showclass {
     private $get_nbr_student="select count(student_id) from ".DB_NAME.".student_class where class_id=?;";
     private $get_total_price="select count(id) from ".DB_NAME.".student_month where  month_n=? and year_nbr=? and class_id=? and year_id=?;";
     private $get_nbr_dont_pay="
-    select  count(database_aouetef.student_class.student_id) from database_aouetef.student_class  
-  where class_id=? and  database_aouetef.student_class.student_id not in (select student_id from database_aouetef.student_month where  month_n=? and year_nbr=? and class_id=? and year_id=?);
+    select  count(".DB_NAME.".student_class.student_id) from ".DB_NAME.".student_class  
+  where class_id=? and  ".DB_NAME.".student_class.student_id not in (select student_id from ".DB_NAME.".student_month where  month_n=? and year_nbr=? and class_id=? and year_id=?);
 ";
    
    private $get_student="select id,f_name,l_name  from ".DB_NAME.".student 
@@ -20,7 +20,7 @@ class showclass {
   
   private $get_attandance='select student_id from '.DB_NAME.'.attandance where class_id=? and day_t=?;';
 
-  private $student_pay="insert into ".DB_NAME.".student_month(month_n,year_nbr,class_id,student_id,year_id)values(?,?,?,?,?);";
+  private $student_pay="insert into ".DB_NAME.".student_month (month_n,year_nbr,class_id,student_id,year_id)values(?,?,?,?,?);";
   private $delete_student="delete  from ".DB_NAME.".student_class where  student_id=?  and class_id=?;";  
 
 
