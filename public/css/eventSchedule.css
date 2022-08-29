@@ -1,0 +1,179 @@
+.addevent,
+.addevent2,.addevent3{
+  position: absolute;
+  top: 10%;
+  left: 30%;
+  background-color: #fff;
+  width: 30%;
+  border-radius: 10px;
+  padding-top: 2px;
+  height: auto;
+  box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.15), -4px -4px 6px rgb(0, 0, 0, 0.15);
+}
+.addevent {
+  min-height: 75%;
+}
+.addevent3{
+	display: block;
+	  min-height: 25%;
+	 
+}
+
+.addevent2 {
+  display: block;
+  min-height: 30%;
+  color:#ffff;
+  background-color: #707070;
+
+}
+.closeevent2 {
+  display: none !important;
+}
+.addevent select,
+.addevent3 select,
+.addevent input ,.input-box select{
+  all: unset;
+}
+.addevent input,
+.addevent2 input {
+  border: 1px solid rgb(0, 0, 0, 0.15);
+  padding: 8px 15px;
+  border-radius: 10px;
+  width: 60%;
+}
+.addevent .eventclose,
+.addevent2 .eventclose ,.addevent3 .eventclose{
+  position: absolute;
+  top: 2px;
+  font-size: 1.4em;
+  right: 2px;
+}
+.addevent .eventclose span i,.addevent3 .eventclose span i{
+	  color: #7f8c8d;
+
+}
+.addevent .eventclose span i,
+.addevent2 .eventclose span i ,.addevent3 .eventclose span i {
+  font-size: 1.4em;
+  transition: 0.2s;
+  cursor: pointer;
+}
+ .addevent2 .eventclose span i  {
+	color:#ffff;
+}
+.addevent .eventclose span i:hover,
+.addevent2 .eventclose span i:hover .addevent3 .eventclose span i:hover{
+  transform: scale(1.2) !important;
+  transition: 0.2s;
+}
+
+.day-columns .day-column .day-content .event {
+  height: 100px !important;
+  width:180px;
+  
+}
+
+.day-columns .day-column .day-content .event .eventtableclose {
+ 
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.day-columns .day-column .day-content .event .eventtableclose a {
+	  color: #fff;
+	  font-size: 1.2em;
+	  right: 2px;
+	}
+
+.day-columns .day-column .day-content .event .eventtableclose span a i {
+  position: relative;
+  font-size: 1.2em;
+  transition: 0.2s;
+  color: #fff;
+}
+.eventtableclose span a i:hover {
+  
+  font-size: 1.4em;
+}
+.addevent .close span i:hover {
+  transform: scale(1.1);
+}
+.addevent select,
+.addevent2 select ,.addevent3 select,.input-box select{
+  position: relative;
+  padding: 10px 15px;
+  border: 1px solid rgb(0, 0, 0, 0.15);
+  border-radius: 10px;
+  width: 60%;
+  margin-bottom: 10px;
+}
+.addevent .eventtitle,
+.addevent2 .eventitle,.addevent3 .eventitle {
+  margin-bottom: 5px;
+}
+.addevent div,
+.addevent2 div ,.addevent3 div {
+  margin: 10px;
+}
+.addevent .saveEvent,
+.addevent3 .saveEvent {
+  all: unset;
+}
+.addevent .saveEvent,
+.addevent3 .saveEvent ,.inscription  .addevent3  .inscript a{
+  position: absolute;
+  background-color: #7f8c8d;
+  border: 1px solid #7f8c8d;
+  display: inline-block;
+  width: 100px;
+  bottom: 4%;
+ 
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.2s;
+  	  box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.15), -4px -4px 6px rgb(0, 0, 0, 0.15);
+  
+}
+.addevent .saveEvent,
+.addevent3 .saveEvent {
+	  border: 1px solid #7f8c8d;
+	
+	left: 4%;
+}
+.inscription .addevent3 .saveEvent{
+	  border: 1px solid  #307d7e ! important;
+	
+	 background-color: #307d7e ! important;
+	
+}
+.addevent3  .inscript a{
+	right:4% ! important;
+		 
+	 text-decoration: none;
+
+}
+.addevent .saveEvent:hover,
+.addevent3 .saveEvent:hover,.addevent3  .inscript a:hover {
+  transform: scale(1.1);
+}
+
+.closeadd {
+  display: none !important;
+}
+.rigester .addevent3 ,.inscription .addevent3 {
+	 left: 25%;
+		  min-height: 40%;
+		  min-width: 50% ! important;
+	
+}
+.addevent3 .fileabsences,.inscription .addevent3 .fileabsences{
+	position:relative;
+	min-height:400px;
+	min-width:450px;
+	border:1px solid rgb(0, 0, 0, 0.15);
+}

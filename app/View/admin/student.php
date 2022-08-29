@@ -204,7 +204,6 @@
 
           </div>
 
-
          
       
     </section>
@@ -241,8 +240,6 @@
           <h2>  <?php echo $msg[1][2] ; ?></h2>
             <h4> <span>--</span><?php echo $msg[1][0] ; ?> <?php echo $msg[1][1] ; ?> <span>--</span></h4>
           </div>
-          
-          <br><br>
          
           <div> 
           <div>تاريخ التسجيل : </div>
@@ -271,7 +268,6 @@ function printcard() {
 </script>
 
 
- 
 <?php
 
 } ?>

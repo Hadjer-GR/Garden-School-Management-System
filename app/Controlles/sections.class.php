@@ -91,7 +91,7 @@ public function addclass(){
 // add class 
 
         $class_n=$_POST['class_name'];
-        $session_nbr=(int)$_POST['session_nbr'];
+       
         $price=$_POST['price'];
         $teacher_id=(int)$_POST['teacher_class'];
 
@@ -101,7 +101,7 @@ public function addclass(){
           $teacher_id=3;
          }
           
-           $this->sectionModel->insert_class($class_n,$session_nbr,$price, $teacher_id, $year_id);
+           $this->sectionModel->insert_class($class_n,$price, $teacher_id, $year_id);
             $msg[0]="تمت اظافة القسم الدراسي بنجاح  شكرا" ;
 
 
@@ -134,15 +134,16 @@ public function addclass(){
   $id=$this->sectionModel->verfie_class_1($class_id);
   $id2=$this->sectionModel->verfie_class_2($class_id);
   
- 
+   echo"id:".$id."--id2:".$id2;
   if($id==0 && $id2==0){
+  
+     
     $id=$this->sectionModel->delete_class($class_id);
     $msg[0]="تم حذف القسم بنجاح";
-   
 
 
+  
   }else{
-    
     $msg[0]="error";
     if($id2==1){
       $msg[1]="عذرا لا يمكنك حذف هذا القسم  ";
@@ -150,11 +151,10 @@ public function addclass(){
       $msg[1]=" يرجى من فضلك اولا حذف  جميع التلميذ هذا  القسم     &nbsp;  &nbsp;  بعد ذالك يمكنك حذف القسم  ";
 
     }
-
-
+ 
   }
-  $_SESSION["complet"]=$msg;
-  redirect("sections");
+  $_SESSION["complet"]=null;
+ // redirect("sections");
 
     }else{
       redirect("");
@@ -192,15 +192,16 @@ public function edite_class(){
 public function update_class(){
   if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION["user_id"])) {
     $class_n=$_POST['class_name'];
-        $session_nbr=(int)$_POST['session_nbr'];
+        
         $price=$_POST['price'];
         $teacher_id=(int)$_POST['teacher_class'];
         $class_id=$_POST["class_id"];
-        $class_info=$this->sectionModel->update_class($class_n,$session_nbr,$price, $teacher_id,$class_id);
+        $class_info=$this->sectionModel->update_class($class_n,$price, $teacher_id,$class_id);
 
         $msg[0]="تم تعديل القسم بنجاح  شكرا" ;
 
         $_SESSION["complet"]=$msg;
+
         redirect("sections");
       
 
@@ -212,5 +213,97 @@ public function update_class(){
   }
 
 }
+
+
+public function emploi(){
+  if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+ 
+   if(isset($_GET['id']) && $_GET['id']!=""){
+    $class_id=$_GET['id'];
+    $_SESSION["class_id"]=$class_id;
+
+
+   }else{
+    $class_id=$_SESSION["class_id"];
+
+   }
+  $msg[2]=$this->sectionModel->all_emploi($class_id);
+      
+
+
+   $this->postview=$this->view("admin/emploi","section",$msg);
+
+
+  }else{
+    redirect("");
+  }
+
+}
+
+
+
+public function emploi_group(){
+
+  if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION["user_id"])) {
+
+ $day=$_POST['day'];
+ $start_t=$_POST["start_t"];
+ $end_t=$_POST["end_t"];
+ $salle=$_POST["salle"];
+ $id=$_SESSION['class_id'];
+
+if(($end_t>$start_t) && $end_t!= $start_t){
+ $id_1=$this->sectionModel->verfie_emploi_1($start_t, $day,$salle);
+
+ 
+ if(sizeof($id_1)==0 ){
+   $id_2=$this->sectionModel->verfie_emploi_1($start_t, $day,$salle);
+  if(sizeof($id_2)==0){
+    $this->sectionModel->insert_emploi($start_t,$end_t,$day,$id,$salle);
+     redirect("sections/emploi");
+  }else{
+    $msg[0]="error";
+    $msg[1]=$id_2;
+
+  }
+ 
+ }else{
+  $msg[0]="error";
+  $msg[1]=$id_1;
+}
+}else{
+   $msg[0]="error2";
+   $msg[1]="يرجى تحديد الوقت بالدقة ";
+}
+   $msg[2]=$this->sectionModel->all_emploi($id);
+  $this->postview=$this->view("admin/emploi","section",$msg);
+
+  }else{
+    redirect("sections/emploi");
+  }
+
+}
+
+
+/*
+*
+* delete  in emploi de temp  
+*/
+
+public function delete_emploi(){
+  if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+    $id=$_GET["id"];
+    $this->sectionModel->delete_emploi($id);
+
+   redirect("sections/emploi");
+  }else{
+    redirect("");
+  }
+}
+
+
+
 
 }

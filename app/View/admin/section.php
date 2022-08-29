@@ -85,7 +85,7 @@
   </div>
 </div>
 
-      <div class="contentbox" >
+      <div class="contentbox"  >
 
 
 
@@ -121,7 +121,7 @@
                          
                      
    <a href="<?php echo URLROOT ;?>sections/edite_class?class_id= <?php echo $all_class[$i]->id ?>" > <i class='bx bx-edit'></i></a>
-    <a href="<?php echo URLROOT ;?>sections/delete_class?class_id= <?php echo $all_class[$i]->id ?>" class="trash"><i class='bx bx-trash'></i></a>
+    <a href="<?php echo URLROOT ;?>sections/emploi?id=<?php echo $all_class[$i]->id ?>" class="trash"><i class='bx bx-grid'></i></a>
                   
                     </div>
   <a  class="viewclass" href="<?php echo URLROOT ;?>Showclasses?class_id= <?php echo $all_class[$i]->id ?>">
@@ -160,11 +160,7 @@
                   </div>
                    
 
-                  <div class="user-input4">
-                    <label>عدد الحصص </label>
-                   <input type="number" required name="session_nbr"  min ="1" max="31" placeholder="    عدد الحصص في الشهر ">     
-                  </div>
-
+                 
                  
                   
                   <div class="user-input4">

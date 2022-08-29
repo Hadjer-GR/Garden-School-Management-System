@@ -9,11 +9,11 @@ private $get_study_year="select id  from ".DB_NAME.".yearscolaire where  start_y
 ";
 
 // add class 
-private $insert_class="insert into  ".DB_NAME.".class (n_class,price,teacher_id,year_id,nbr_session)values(?,?,?,?,?);";
+private $insert_class="insert into  ".DB_NAME.".class (n_class,price,teacher_id,year_id)values(?,?,?,?);";
 private $get_all_class="select ".DB_NAME.".class.id,n_class,f_name,l_name 
 from ".DB_NAME.".class
  left join ".DB_NAME.".teacher
-on ".DB_NAME.".class.teacher_id=".DB_NAME.".teacher.id where year_id=?;";
+on ".DB_NAME.".class.teacher_id=".DB_NAME.".teacher.id where year_id=? order by n_class;";
 
 //teacher class
 
@@ -26,8 +26,20 @@ private $verfie_class_2="select id from ".DB_NAME.".attandance where class_id=?;
 private $delete_class="delete from ".DB_NAME.".class where id=?;";
 
 private $get_class_info="select * from ".DB_NAME.".class where id=?;";
-private $update_class="update ".DB_NAME.".class set n_class=?, price=? , teacher_id=?  ,nbr_session=?  where id=?;
+private $update_class="update ".DB_NAME.".class set n_class=?, price=? , teacher_id=?  where id=?;
 ";
+// emploi de temp 
+
+private $verifie_salle_sql="select  id,start_t,end_t from ".DB_NAME.".emploi where start_t=? and day=? and  salle=?;";
+private $verifie_salle2_sql="select  id,start_t,end_t from ".DB_NAME.".emploi where end_t=? and day=? and  salle=?;";
+private $insert_emploi="insert into ".DB_NAME.".emploi (start_t,end_t,day,class_id,salle)values(?,?,?,?,?);
+";
+
+private $all_emploi="select id ,start_t,end_t,day,salle from ".DB_NAME.".emploi  where  class_id=? order by start_t;";
+
+private $delete_emploi="delete from ".DB_NAME.".emploi where id=?;";
+
+
 
 public function __construct()
 {
@@ -80,7 +92,7 @@ public function get_study_year(){
 */
 
 
-public function insert_class($class_n,$session_nbr,$price, $teacher_id,$year_id){
+public function insert_class($class_n,$price, $teacher_id,$year_id){
 
   $this->db->preparedstmt($this->insert_class);
 
@@ -88,7 +100,6 @@ public function insert_class($class_n,$session_nbr,$price, $teacher_id,$year_id)
     $this->db->bind_Value(2,$price,null);
     $this->db->bind_Value(3,$teacher_id,null);
     $this->db->bind_Value(4,$year_id,null);
-    $this->db->bind_Value(5,$session_nbr,null);
     $this->db->executeQuery();
   
 }
@@ -215,19 +226,122 @@ public function get_class_info($class_id){
 */
 
 
-public function update_class($class_n,$session_nbr,$price, $teacher_id,$class_id){
+public function update_class($class_n,$price, $teacher_id,$class_id){
 
   $this->db->preparedstmt($this->update_class);
 
     $this->db->bind_Value(1,$class_n,null);
     $this->db->bind_Value(2,$price,null);
     $this->db->bind_Value(3,$teacher_id,null);
-    $this->db->bind_Value(4,$session_nbr,null);
     $this->db->bind_Value(5,$class_id,null);
 
     $this->db->executeQuery();
   
 }
+
+
+/*
+*
+* verfie si la salle est disponible ou no 
+*
+*/
+
+
+public function verfie_emploi_1($start_t,$day,$salle){
+
+  $this->db->preparedstmt($this->verifie_salle_sql);
+  $this->db->bind_Value(1,$start_t); 
+   $this->db->bind_Value(2,$day); 
+   $this->db->bind_Value(3,$salle); 
+
+  $emploi=$this->db->fetchAll();
+
+  
+    return $emploi;
+  
+}
+
+public function verfie_emploi_2($start_t,$day,$salle){
+
+  $this->db->preparedstmt($this->verifie_salle2_sql);
+  $this->db->bind_Value(1,$start_t); 
+  $this->db->bind_Value(2,$day); 
+  $this->db->bind_Value(3,$salle); 
+  $emploi=$this->db->fetchAll();
+
+    return $emploi;
+  
+}
+
+
+
+/*
+*
+* insert a emploi temp 
+*
+*/
+
+
+public function insert_emploi($start_t,$end_t,$day,$class_id,$salle){
+
+  $this->db->preparedstmt($this->insert_emploi);
+
+    $this->db->bind_Value(1,$start_t,null);
+    $this->db->bind_Value(2,$end_t,null);
+    $this->db->bind_Value(3,$day,null);
+    $this->db->bind_Value(4,$class_id,null);
+    $this->db->bind_Value(5,$salle,null);
+
+    $this->db->executeQuery();
+  
+}
+
+
+
+
+/*
+*
+* get all emploi de temp de this class
+*
+*/
+
+
+
+
+public function all_emploi($class_id){
+
+  $this->db->preparedstmt($this->all_emploi);
+  $this->db->bind_Value(1,$class_id,null);
+
+  $all_emploi=$this->db->fetchAll();
+
+  return $all_emploi;
+
+  
+}
+
+
+/*
+*
+* delete un emploi 
+*
+*/
+
+
+
+
+public function delete_emploi($id){
+
+  $this->db->preparedstmt($this->delete_emploi);
+  $this->db->bind_Value(1,$id,null);
+
+  $this->db->executeQuery();
+
+
+  
+}
+
+
 
 
 
