@@ -233,7 +233,7 @@ public function update_class($class_n,$price, $teacher_id,$class_id){
     $this->db->bind_Value(1,$class_n,null);
     $this->db->bind_Value(2,$price,null);
     $this->db->bind_Value(3,$teacher_id,null);
-    $this->db->bind_Value(5,$class_id,null);
+    $this->db->bind_Value(4,$class_id,null);
 
     $this->db->executeQuery();
   

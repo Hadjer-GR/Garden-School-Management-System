@@ -116,12 +116,7 @@
                    <input type="text" required name="class_name" value="<?php echo $msg[1]->n_class;?>" placeholder="  اسم القسم  ">     
                   </div>
                    
-
-                  <div class="user-input4">
-                    <label>عدد الحصص </label>
-                   <input type="number" required name="session_nbr" value="<?php echo $msg[1]->nbr_session;?>"  min ="1" max="31" placeholder="    عدد الحصص في الشهر ">     
-                  </div>
-
+ 
                  
                   
                   <div class="user-input4">
@@ -151,7 +146,7 @@
 
 
 ?>
-                    <option value="<?php echo $teacher_class[$i]->id ?>" <?php if($teacher_class[$i]->id ==$msg[1]->teacher_id){echo"selected";} ?>>  <?php echo $teacher_class[$i]->f_name.$teacher_class[$i]->l_name?>   </option>
+                    <option value="<?php echo $teacher_class[$i]->id ?>" <?php if($teacher_class[$i]->id ==$msg[1]->teacher_id){echo"selected";} ?>>  <?php echo $teacher_class[$i]->f_name." ".$teacher_class[$i]->l_name?>   </option>
 
 <?php  }?>
 
@@ -163,7 +158,7 @@
                  
                 </div>
                   <div class="submit">
-                    <input type="submit" value="اظافة">
+                    <input type="submit" value="تعديل">
                   </div>
 
             </form>

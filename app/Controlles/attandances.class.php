@@ -111,7 +111,48 @@ class attandances extends Controllers{
 
 
 
+        public function read_qr(){
+          if( isset($_SESSION["user_id"])){
+
+
+      $this->postview=$this->view("admin/read_qr","attandance");
+
+          }else{
+            redirect("");
+          }
+
+        }
+         
+
+
+
         
+  public function read_card(){
+          if( isset($_SESSION["user_id"])){
+    
+            $student_id=$_POST["text"];
+     if($student_id !="" && $student_id!= null){
+
+      
+
+       $msg[0]="تم التسجيل";
+      //$this->postview=$this->view("admin/read_qr","attandance",$msg);
+
+
+
+     }else{
+    //  redirect("attandances/read_qr");
+     }
+   var_dump($student_id);
+
+
+
+
+          }else{
+            redirect("");
+          }
+
+        }
     
 
 

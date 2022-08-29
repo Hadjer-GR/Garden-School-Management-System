@@ -191,8 +191,8 @@ public function edite_class(){
 
 public function update_class(){
   if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION["user_id"])) {
-    $class_n=$_POST['class_name'];
-        
+
+        $class_n=$_POST['class_name']; 
         $price=$_POST['price'];
         $teacher_id=(int)$_POST['teacher_class'];
         $class_id=$_POST["class_id"];
@@ -201,8 +201,9 @@ public function update_class(){
         $msg[0]="تم تعديل القسم بنجاح  شكرا" ;
 
         $_SESSION["complet"]=$msg;
+    
 
-        redirect("sections");
+       redirect("sections");
       
 
 
