@@ -9,8 +9,9 @@ class Attandance {
     private $insert_attandance="insert into ".DB_NAME.".attandance (student_id,class_id,day_t)values(?,?,?);
     ";
 
-
-
+   private $get_id_student="select id from ".DB_NAME.".student where id=?;";
+   private $insert_qr_code="insert into ".DB_NAME.".qr_code(student_id,date_t,day)values(?,?,?);
+   ";
 
 
 
@@ -69,6 +70,44 @@ public function __construct()
 
 
 
+/*
+    *
+    * check if the id capture by qr-code is correct
+    */
+
+    public function student_id($id){
+
+      $this->db->preparedstmt($this->get_id_student);
+     
+        $this->db->bind_Value(1,$id,null);
+        $attandance=$this->db->fetch();
+        
+        $att=0;
+        if(isset($attandance) && $attandance != ""){
+        $att=$attandance->id;
+        }
+        
+        return $att;
+      
+    }
+
+   
+  /*
+    *
+    * insert qr_ attandance
+    */
+
+    public function qr_attandance($id,$date_t,$day){
+
+      $this->db->preparedstmt($this->insert_qr_code);
+     
+        $this->db->bind_Value(1,$id,null);
+        $this->db->bind_Value(2,$date_t,null); 
+        $this->db->bind_Value(3,$day,null);   
+       $this->db->executeQuery();
+
+
+    }
 
 
 

@@ -17,7 +17,31 @@
 
 <?php  require_once"header.php";?>
 
+<script>
 
+  // banner
+
+  
+        	const hideBanners= (e) => {
+        	  document
+        	    .querySelectorAll(".banner.visible")
+        	    .forEach((b) => b.classList.remove("visible"));
+        	};
+            const hideBanners2 = (e) => {
+        	  document
+        	    .querySelectorAll(".banner.visible")
+        	    .forEach((b) => b.classList.remove("visible"));
+        	};
+        	
+
+
+
+
+// write Ajax 
+
+
+
+</script>
 
 <section class="home " >
   <div class="headermobile">
@@ -32,33 +56,190 @@
    </div>
 
 
-   <?php 
-if(isset($_POST["sumbit"])){
-    echo "hadjergggg";
-}
-
-?>
-
-
-
-   <div class="searchsection" style="margin-top:14vh ;">
-        
-      
-    <form action="<?php URLROOT?>sections/read_card"  method="post" class="form" name="myForm2">
-        <div class="searchbar">
-            <input type="text" class="searchbar__input"  name="text"  dir="rtl">
-            <input type="submit">
-        </div>
+      <form action="#" method="post">
+     <input  class="qr_input"  id="text" type="text" name="qr" >
     </form>
-     </div>
 
+
+
+    <!--  content notification  -->
+
+
+
+
+    <div class="containermsg" id="containermsg" dir="rtl">
+
+   
+  
+
+
+
+
+   
+
+    </div>
+
+  
 </section>
 
-
 <script type="text/javascript" language="javascript">
-    
+ 
+//1. creqte reauest 
+       	
+function createRequest(){
+        		var xmlhttp;
+          	 
+          	  if(window.XMLHttpRequest){
+          		  xmlhttp=new XMLHttpRequest();
+          		  console.log("hi hadjer");
+          	  }else{
+          		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+          		  if(! xmlhttp){
+              		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP.3.0");
+       
+          		  }
+          		  if(! xmlhttp){
+              		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP.6.0");
+       
+          		  }
+          		  
+          	  }
+          	  return xmlhttp;
+        		
+        		
+        		
+        		
+        	}
+   
 
-    	  
+
+
+
+
+//  audio 
+
+
+  
+
+// 2. send qr code 
+
+// code to post using ajax
+const url="<?php echo URLROOT ?>attandances/send_qr";
+const text=document.getElementById("text");
+const data="text="+text.value;
+
+
+
+//set a period of time to send qr_code
+
+
+function send_qr(){
+     
+    const input=document.getElementById("text");
+    console.log(input.value);
+    if(input.value=="" || input.value== null){
+
+
+    }else{
+
+        setTimeout( (eo) => {
+            console.log("wait22");
+         console.log(input.value);
+        
+         connect(); 
+    
+    }, 1000);
+
+    }
+
+    setTimeout( send_qr, 1500);
+
+
+}
+
+send_qr();
+
+
+
+
+
+
+
+
+
+  function connect(){
+  var xmlhttp;
+  xmlhttp=createRequest();
+  const text=document.getElementById("text");
+  var path="<?php echo URLROOT ?>attandances/send_qr";
+  
+    var paramater="qr="+text.value;
+
+
+//1. show message
+
+const error=`
+<div class="banners-container msg" dir="ltr">
+ <div class="banners " dir="ltr">
+<div class="banner error visible" id="banner1">
+      <div class="banner-message" dir="ltr">
+     
+      يرجى الاعادة مرة اخري
+      
+            </div>
+      <div class="banner-close" onclick="hideBanners1()"> <i class='bx bx-error-circle' ></i></div>
+    </div>
+    <audio src="<?php echo URLROOT; ?>mp3/failed.mp3" autoplay>
+
+    </div> </div>`;
+
+    const  send_qr=`<div class="banners-container msg" dir="ltr">
+                      <div class="banners " dir="ltr">
+                          <div class="banner success visible" id="banner2">
+                            <div class="banner-message" dir="ltr">
+                             تم التسجيل 
+                              </div>
+                            <div class="banner-close" onclick="hideBanners2()"><i class='bx bx-check'></i></div>
+                          </div>
+                          <audio src="<?php echo URLROOT; ?>mp3/sec.mp3" autoplay>
+                        </div> </div>`;  
+
+
+
+  xmlhttp.onreadystatechange=function(){
+    		  if(xmlhttp.readyState <4){
+    			 console.log("not connected");
+
+    		  }
+    		  if(xmlhttp.readyState==4 & xmlhttp.status==200){
+                 const data =JSON.parse(xmlhttp.responseText);
+    			  text.value="";
+                  console.log("connected");
+                    console.log(typeof(data));
+
+                  if(data[0]=="yes"){
+                    document.getElementById('containermsg').insertAdjacentHTML('afterbegin',send_qr);
+
+                  }else{
+               
+                    document.getElementById('containermsg').insertAdjacentHTML('afterbegin',error);
+                
+                  }
+                          
+
+
+    		  }
+    		  
+    		  
+    	  }
+    	 
+       xmlhttp.open("POST",path,true);
+       xmlhttp.setRequestHeader("content-type","application/x-www-form-urlencoded");
+       xmlhttp.send(paramater);
+       console.log("try try try again ");
+         
+        }
+       
  </script>
 
 

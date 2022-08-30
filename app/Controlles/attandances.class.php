@@ -127,36 +127,41 @@ class attandances extends Controllers{
 
 
         
-  public function read_card(){
+  public function send_qr(){
           if( isset($_SESSION["user_id"])){
     
-            $student_id=$_POST["text"];
-     if($student_id !="" && $student_id!= null){
-
+            $id=$_POST["qr"];
       
+         $student_id= $this->attandancenModel->student_id($id);
+         $array=[];
+         if($student_id==$id){
+        
+          $date_t=date("Y")."-".date("m")."-1";
+          $day=date("w");
+          $time= date("h:m");
+          $this->attandancenModel->qr_attandance($id,$date_t,$day);
+          $array=["yes"];
 
-       $msg[0]="تم التسجيل";
-      //$this->postview=$this->view("admin/read_qr","attandance",$msg);
+         }else{
+          $array=["no"];
+         
 
+         }
+         echo json_encode($array);
 
+          
 
-     }else{
-    //  redirect("attandances/read_qr");
-     }
-   var_dump($student_id);
-
-
-
-
-          }else{
-            redirect("");
-          }
-
+        }else{
+          redirect("");
         }
     
 
 
+      }
 
+    
+
+      
 
 
 }

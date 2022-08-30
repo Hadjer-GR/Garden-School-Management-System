@@ -249,6 +249,7 @@ public function emploi_group(){
   if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION["user_id"])) {
 
  $day=$_POST['day'];
+ $day_nbr=date("w");
  $start_t=$_POST["start_t"];
  $end_t=$_POST["end_t"];
  $salle=$_POST["salle"];
@@ -261,7 +262,7 @@ if(($end_t>$start_t) && $end_t!= $start_t){
  if(sizeof($id_1)==0 ){
    $id_2=$this->sectionModel->verfie_emploi_1($start_t, $day,$salle);
   if(sizeof($id_2)==0){
-    $this->sectionModel->insert_emploi($start_t,$end_t,$day,$id,$salle);
+    $this->sectionModel->insert_emploi($start_t,$end_t,$day,$id,$salle,$day_nbr);
      redirect("sections/emploi");
   }else{
     $msg[0]="error";

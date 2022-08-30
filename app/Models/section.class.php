@@ -32,7 +32,7 @@ private $update_class="update ".DB_NAME.".class set n_class=?, price=? , teacher
 
 private $verifie_salle_sql="select  id,start_t,end_t from ".DB_NAME.".emploi where start_t=? and day=? and  salle=?;";
 private $verifie_salle2_sql="select  id,start_t,end_t from ".DB_NAME.".emploi where end_t=? and day=? and  salle=?;";
-private $insert_emploi="insert into ".DB_NAME.".emploi (start_t,end_t,day,class_id,salle)values(?,?,?,?,?);
+private $insert_emploi="insert into ".DB_NAME.".emploi (start_t,end_t,day,class_id,salle,day_nbr)values(?,?,?,?,?,?);
 ";
 
 private $all_emploi="select id ,start_t,end_t,day,salle from ".DB_NAME.".emploi  where  class_id=? order by start_t;";
@@ -282,7 +282,7 @@ public function verfie_emploi_2($start_t,$day,$salle){
 */
 
 
-public function insert_emploi($start_t,$end_t,$day,$class_id,$salle){
+public function insert_emploi($start_t,$end_t,$day,$class_id,$salle,$day_nbr){
 
   $this->db->preparedstmt($this->insert_emploi);
 
@@ -291,6 +291,7 @@ public function insert_emploi($start_t,$end_t,$day,$class_id,$salle){
     $this->db->bind_Value(3,$day,null);
     $this->db->bind_Value(4,$class_id,null);
     $this->db->bind_Value(5,$salle,null);
+    $this->db->bind_Value(6,$day_nbr,null);
 
     $this->db->executeQuery();
   
