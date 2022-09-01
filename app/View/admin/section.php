@@ -106,9 +106,10 @@ if($_SESSION["type"]=="admin"){
       <?php 
        
        if( isset($_SESSION['id_year_scolaire'])){
-       $year_id= $_SESSION['id_year_scolaire'];
 
-  
+
+        
+       $year_id= $_SESSION['id_year_scolaire'];
       require_once "../app/Models/section.class.php";
       
       $postmodel=new section;

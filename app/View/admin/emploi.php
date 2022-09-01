@@ -8,11 +8,10 @@
     <link rel="stylesheet" href="<?php echo URLROOT ;?>css/style.css">
     <link rel="stylesheet" href="<?php echo URLROOT ;?>css/table.css">
     <link rel="stylesheet" href="<?php echo URLROOT ;?>css/eventSchedule.css">
-    <link rel="stylesheet" href="<?php echo URLROOT ;?>css/mobile.css" media="(max-width: 700px)">
     <link rel="stylesheet" href="<?php echo URLROOT ;?>css/table.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ;?>css/mobile.css" media="(max-width: 700px)">
 
         <link rel="icon" href="<?php echo URLROOT ;?>/image/icon3.png" type="image/icon png">
-         <link rel="stylesheet" href="<?php echo URLROOT ;?>css/mobile.css" media="(max-width: 700px)">
          <script defer src="<?php echo URLROOT ;?>js/script.js"></script>
     <script defer src="<?php echo URLROOT ;?>js/mobilescreen.js"></script>
 </head>

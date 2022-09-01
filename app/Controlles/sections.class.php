@@ -33,8 +33,7 @@ class sections extends Controllers{
         $this->postview=$this->view("admin/section","section",$msg);
 
       }else{
-        $this->postview=$this->view("admin/section","section");
-
+       $this->postview=$this->view("admin/section","section");
       }
       
 
@@ -98,7 +97,7 @@ public function addclass(){
          $year_id=$_SESSION["id_year_scolaire"];
         
          if($teacher_id ==0){
-          $teacher_id=3;
+          $teacher_id=1;
          }
           
            $this->sectionModel->insert_class($class_n,$price, $teacher_id, $year_id);
@@ -290,8 +289,7 @@ if($time_start<$time_end && $time_end!=$time_start){
    $msg[1]="يرجى تحديد الوقت بالدقة ";
 }
    $msg[2]=$this->sectionModel->all_emploi($id);
-   var_dump($time_start );
-   var_dump($time_end);
+  
  $this->postview=$this->view("admin/emploi","section",$msg);
 
   }else{
