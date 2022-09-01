@@ -39,7 +39,7 @@ class materiel extends Controllers{
 
 
     }else{
-        redirect("");
+        redirect("sections");
     }
    }
 

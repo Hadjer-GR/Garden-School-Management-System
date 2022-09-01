@@ -20,6 +20,15 @@ class Pages extends Controllers{
   }
    
   public function home(){
+    //2. verifie rapport date_t
+    $month=date("m");
+    $year_nbr=date("Y");
+    $date=date("Y")."-".date("m")."-".date("d");
+    $date_t=$this->Usermodel->verfie_rapport($month,$year_nbr);
+
+    if(isset($date_t) && $date_t ==""){
+      $this->Usermodel->insert_rapport($date);
+    }
     // rapport all month
    $msg[0]=$this->Usermodel->rapport();
 
@@ -42,10 +51,19 @@ class Pages extends Controllers{
  // calcute le poursontage 
  $total=$msg[1]->spending+$msg[1]->income;
 
- $msg[2]=(($msg[1]->income)*100)/$total;
+ if($total != 0) {
+  $msg[2]=(($msg[1]->income)*100)/$total;
 
- $msg[3]=(($msg[1]->spending_teacher)*100)/$total;
- $msg[4]=(($msg[1]->spending_materiel)*100)/$total;
+  $msg[3]=(($msg[1]->spending_teacher)*100)/$total;
+  $msg[4]=(($msg[1]->spending_materiel)*100)/$total;
+}else{
+  $msg[2]=0;
+
+  $msg[3]=0;
+  $msg[4]=0;
+}
+
+
    $this->postView= $this->view("admin/home","",$msg);
   }
 

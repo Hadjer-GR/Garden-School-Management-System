@@ -18,7 +18,18 @@
 </head>
 <body>
     
-<?php  require_once"header.php";?>
+
+<?php 
+
+if($_SESSION["type"]=="admin"){
+  require_once "header.php";
+
+}else{
+  require_once "sec_header.php";
+
+}
+
+?>
 
 
 
@@ -329,9 +340,9 @@
    </div>
   
 <br><br>
-<div>
+<div dir="rtl">
 
-    <input type="submit" value="Next" class="saveEvent">
+    <input type="submit" value="اظافة" class="saveEvent">
 </div>
 
 

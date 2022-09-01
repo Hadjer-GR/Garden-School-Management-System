@@ -13,7 +13,17 @@
 </head>
 <body>
 
-<?php  require_once"header.php";?>
+<?php 
+
+if($_SESSION["type"]=="admin"){
+  require_once "header.php";
+
+}else{
+  require_once "sec_header.php";
+
+}
+
+?>
 
 <section class="home " >
   <div class="headermobile">
@@ -35,7 +45,7 @@
 
 <?php 
  
- if($_SESSION['id_year_scolaire']){
+ if( isset($_SESSION['id_year_scolaire'])){
  $year_id= $_SESSION['id_year_scolaire'];
 
 

@@ -18,8 +18,8 @@ class list_employ{
  
 
 
-  private $start_work="insert into ".DB_NAME.".rapport_teacher(teacher_id,date_t)values(?,?);";
-  private $list_work="select teacher_id,is_pay from ".DB_NAME.".rapport_teacher where month(date_t)=? and year(date_t)=?;";
+  private $start_work="insert into ".DB_NAME.".rapport_teacher(teacher_id,month_n,year_nbr)values(?,?,?);";
+  private $list_work="select teacher_id,is_pay from ".DB_NAME.".rapport_teacher where month_n=? and year_nbr=?;";
   private $teacher_rapport="select * from ".DB_NAME.".rapport_teacher where teacher_id=?;";
 
   private $teacher_name="select f_name,l_name from ".DB_NAME.".teacher where id=?;";
@@ -162,11 +162,12 @@ public function get_nbr_have_pay($month_nbr,$year_nbr,$year_id){
   */
 
    
-  public function satr_work($teacher_id,$date_w){
+  public function satr_work($teacher_id,$month_n,$year_nbr){
 
       $this->db->preparedstmt($this->start_work);
       $this->db->bind_Value(1,$teacher_id,null);
-      $this->db->bind_Value(2,$date_w,null);
+      $this->db->bind_Value(2,$month_n,null);
+      $this->db->bind_Value(3,$year_nbr,null);
 
       $this->db->executeQuery();
     

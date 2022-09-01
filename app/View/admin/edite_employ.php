@@ -13,7 +13,19 @@
     <title>Amal</title>
 </head>
 <body>
-<?php  require_once"header.php";?>
+
+
+<?php 
+
+if($_SESSION["type"]=="admin"){
+  require_once "header.php";
+
+}else{
+  require_once "sec_header.php";
+
+}
+
+?>
 
 
 <script>

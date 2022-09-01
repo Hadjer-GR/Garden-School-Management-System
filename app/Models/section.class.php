@@ -30,7 +30,7 @@ private $update_class="update ".DB_NAME.".class set n_class=?, price=? , teacher
 ";
 // emploi de temp 
 
-private $verifie_salle_sql="select  id,start_t,end_t from ".DB_NAME.".emploi where start_t=? and day=? and  salle=?;";
+private $verifie_salle_sql="select  id,start_t,end_t from ".DB_NAME.".emploi where start_t<=? and day=? and  salle=? and end_t >?;";
 private $verifie_salle2_sql="select  id,start_t,end_t from ".DB_NAME.".emploi where end_t=? and day=? and  salle=?;";
 private $insert_emploi="insert into ".DB_NAME.".emploi (start_t,end_t,day,class_id,salle,day_nbr)values(?,?,?,?,?,?);
 ";
@@ -38,6 +38,8 @@ private $insert_emploi="insert into ".DB_NAME.".emploi (start_t,end_t,day,class_
 private $all_emploi="select id ,start_t,end_t,day,salle from ".DB_NAME.".emploi  where  class_id=? order by start_t;";
 
 private $delete_emploi="delete from ".DB_NAME.".emploi where id=?;";
+
+private $verfie_emploi_3="select id from ".DB_NAME.".emploi where start_t=? and day_nbr=? and class_id=? and end_t >?;";
 
 
 
@@ -253,6 +255,7 @@ public function verfie_emploi_1($start_t,$day,$salle){
   $this->db->bind_Value(1,$start_t); 
    $this->db->bind_Value(2,$day); 
    $this->db->bind_Value(3,$salle); 
+   $this->db->bind_Value(4,$start_t); 
 
   $emploi=$this->db->fetchAll();
 
@@ -344,6 +347,34 @@ public function delete_emploi($id){
 
 
 
+
+
+/*
+*
+* verfie_emploi_1 
+*
+*/
+
+
+
+
+public function verfie_emploi_3($start_t,$day_nbr,$class_id){
+
+  $this->db->preparedstmt($this->verfie_emploi_3);
+  $this->db->bind_Value(1,$start_t,null);
+  $this->db->bind_Value(2,$day_nbr,null);
+  $this->db->bind_Value(3,$class_id,null);
+  $this->db->bind_Value(4,$start_t,null);
+
+  $emploi_id=$this->db->fetch();
+  $id=0;
+  if($emploi_id->id!=""){
+    $id=1;
+  }
+
+  return $id;
+ 
+}
 
 
 }

@@ -128,7 +128,7 @@ class attandances extends Controllers{
 
         
   public function send_qr(){
-          if( isset($_SESSION["user_id"])){
+          if( isset($_SESSION["user_id"]) ){
     
             $id=$_POST["qr"];
       
@@ -137,9 +137,9 @@ class attandances extends Controllers{
          if($student_id==$id){
         
           $date_t=date("Y")."-".date("m")."-1";
-          $day=date("w");
-          $time= date("h:m");
-          $this->attandancenModel->qr_attandance($id,$date_t,$day);
+          $time_t=date("h:i:00", (time() - 60 * 60));
+          $day=date("N")+1;
+          $this->attandancenModel->qr_attandance($id,$date_t,$day,$time_t);
           $array=["yes"];
 
          }else{

@@ -249,18 +249,25 @@ public function emploi_group(){
   if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION["user_id"])) {
 
  $day=$_POST['day'];
- $day_nbr=date("w");
+ $day_nbr=$this->getDay($day);
  $start_t=$_POST["start_t"];
  $end_t=$_POST["end_t"];
  $salle=$_POST["salle"];
  $id=$_SESSION['class_id'];
 
-if(($end_t>$start_t) && $end_t!= $start_t){
+ $time_start = strtotime($start_t);
+ $time_end = strtotime($end_t);
+
+
+if($time_start<$time_end && $time_end!=$time_start){
  $id_1=$this->sectionModel->verfie_emploi_1($start_t, $day,$salle);
+ $id_3=$this->sectionModel->verfie_emploi_3($start_t,$day_nbr,$id);
 
  
- if(sizeof($id_1)==0 ){
+ if($id_3==0 ){
    $id_2=$this->sectionModel->verfie_emploi_1($start_t, $day,$salle);
+   // verfie le class 
+   if(sizeof($id_1)==0){
   if(sizeof($id_2)==0){
     $this->sectionModel->insert_emploi($start_t,$end_t,$day,$id,$salle,$day_nbr);
      redirect("sections/emploi");
@@ -269,17 +276,23 @@ if(($end_t>$start_t) && $end_t!= $start_t){
     $msg[1]=$id_2;
 
   }
- 
- }else{
+}else{
   $msg[0]="error";
   $msg[1]=$id_1;
+}
+ }else{
+  $msg[0]="error3";
+  $msg[1]=" القسم يدرس فعلا في هذا الوقت  ";
+ 
 }
 }else{
    $msg[0]="error2";
    $msg[1]="يرجى تحديد الوقت بالدقة ";
 }
    $msg[2]=$this->sectionModel->all_emploi($id);
-  $this->postview=$this->view("admin/emploi","section",$msg);
+   var_dump($time_start );
+   var_dump($time_end);
+ $this->postview=$this->view("admin/emploi","section",$msg);
 
   }else{
     redirect("sections/emploi");
@@ -306,6 +319,34 @@ public function delete_emploi(){
 }
 
 
+public function getDay($i){
+ $day=-1;
+  switch ($i) {
+    case "الاحد":
+      $day=1;
+      break;
+    case "الاثنين":
+        $day=2;
+        break;
+    case "الثلاثاء":
+        $day=3;
+        break;
+    case "الاربعاء":
+        $day=4;
+        break;
+    case "الخميس":
+      $day=5; 
+      break;
+    case "الجمعة":
+      $day=6;
+      break;  
+    case "السبت":
+      $day=0;
+      break; 
 
+}
+return $day;
+
+}
 
 }

@@ -15,7 +15,19 @@
     <script defer src="<?php echo URLROOT ;?>js/mobilescreen.js"></script>
     </head>
     <body>
-    <?php  require_once"header.php";?>
+
+    
+<?php 
+
+if($_SESSION["type"]=="admin"){
+  require_once "header.php";
+
+}else{
+  require_once "sec_header.php";
+
+}
+
+?>
 
     <script>
       // banner
@@ -93,7 +105,7 @@
       
       <?php 
        
-       if($_SESSION['id_year_scolaire']){
+       if( isset($_SESSION['id_year_scolaire'])){
        $year_id= $_SESSION['id_year_scolaire'];
 
   

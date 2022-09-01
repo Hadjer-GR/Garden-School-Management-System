@@ -15,7 +15,18 @@
 
 
 
-<?php  require_once"header.php";?>
+
+<?php 
+
+if($_SESSION["type"]=="admin"){
+  require_once "header.php";
+
+}else{
+  require_once "sec_header.php";
+
+}
+
+?>
 
 <script>
 
@@ -56,8 +67,9 @@
    </div>
 
 
-      <form action="#" method="post">
+      <form action="<?php echo URLROOT ;?>attandances/send_qr" method="post">
      <input  class="qr_input"  id="text" type="text" name="qr" >
+     <!-- <input type="submit"> -->
     </form>
 
 
@@ -199,7 +211,7 @@ const error=`
                             <div class="banner-message" dir="ltr">
                              تم التسجيل 
                               </div>
-                            <div class="banner-close" onclick="hideBanners2()"><i class='bx bx-check'></i></div>
+                            <div class="banner-close" onclick="hideBanners()"><i class='bx bx-check'></i></div>
                           </div>
                           <audio src="<?php echo URLROOT; ?>mp3/sec.mp3" autoplay>
                         </div> </div>`;  

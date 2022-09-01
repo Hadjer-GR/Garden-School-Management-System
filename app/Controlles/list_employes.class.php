@@ -36,8 +36,8 @@ $year_id=$_SESSION["id_year_scolaire"];
 // get all id of employ who gets theire salory this month and who work this month
       $list_work= $this->list_employModel->list_work($month_nbr,$year_nbr);
        $msg[4]=$list_work;
-  
-$this->postview=$this->view("admin/list_employ","list_employ",$msg);
+   var_dump($msg[4]);
+   $this->postview=$this->view("admin/list_employ","list_employ",$msg);
 
 
     }else{
@@ -237,9 +237,10 @@ public function work(){
 
 
     $employ_id=$_GET["id"];
-    $date_w=date("Y")."-".date("m")."-".date("d");
+    $month_n=date("m");
+    $year_nbr=date("Y");
 
-    $this->list_employModel->satr_work($employ_id,$date_w);
+    $this->list_employModel->satr_work($employ_id,$month_n,$year_nbr);
     redirect("list_employes");
 
 

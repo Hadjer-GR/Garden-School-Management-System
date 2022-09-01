@@ -9,6 +9,7 @@ class User
 
    private $insert_user_sql = "INSERT INTO `users` ( `nom`, `prenom`, `contact`, `password`, `date`, `gener`) VALUES ( ?, ?, ?,?, ?,?);";
    private $authentication = "SELECT id FROM `user` WHERE username=? and password=?;";
+   private $get_type="select type from ".DB_NAME.".user where id=?;";
   // scolaire study 
 
 private $get_study_year="select id  from ".DB_NAME.".yearscolaire where  start_y <= ? and end_y > ?;
@@ -83,6 +84,23 @@ public function get_study_year(){
       }
      
    }
+
+   // type of user 
+   public function get_type($id)
+   {
+      $this->db->preparedstmt($this->get_type);
+      $this->db->bind_Value(1, $id, null);
+
+      $type=$this->db->fetch();
+
+      return $type;
+      
+     
+   }
+
+
+
+
 
 
 /**

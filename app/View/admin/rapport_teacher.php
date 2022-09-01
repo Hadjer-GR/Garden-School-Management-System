@@ -76,7 +76,7 @@
         ?>
 
     <tr>
-                        <th>  <?php echo $rapport[$i]->date_t;?></th>
+                        <th>  <?php echo $rapport[$i]->year_nbr."/". $rapport[$i]->month_n;?></th>
                         <th>&nbsp;</th>
                         <th>&nbsp;</th>
                         <?php
