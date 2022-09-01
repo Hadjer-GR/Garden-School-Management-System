@@ -262,3 +262,15 @@
 <b>Warning</b>:  Trying to access array offset on value of type int in <b>C:\xampp\htdocs\school_system\app\util\phpqrcode\qrsplit.php</b> on line <b>53</b><br />
 <br />
 <b>Warning</b>:  Trying to access array offset on value of type int in <b>C:\xampp\htdocs\school_system\app\util\phpqrcode\qrsplit.php</b> on line <b>62</b><br />
+2022-09-01 09:49:04: <br />
+<b>Warning</b>:  Trying to access array offset on value of type int in <b>C:\xampp\htdocs\school_system\app\util\phpqrcode\qrsplit.php</b> on line <b>71</b><br />
+<br />
+<b>Warning</b>:  Trying to access array offset on value of type int in <b>C:\xampp\htdocs\school_system\app\util\phpqrcode\qrsplit.php</b> on line <b>53</b><br />
+<br />
+<b>Warning</b>:  Trying to access array offset on value of type int in <b>C:\xampp\htdocs\school_system\app\util\phpqrcode\qrsplit.php</b> on line <b>62</b><br />
+2022-09-01 10:01:04: empty string!!!2022-09-01 10:01:42: empty string!!!2022-09-01 10:02:29: empty string!!!2022-09-01 10:03:28: empty string!!!2022-09-01 10:04:11: empty string!!!2022-09-01 10:07:00: <br />
+<b>Warning</b>:  Trying to access array offset on value of type int in <b>C:\xampp\htdocs\school_system\app\util\phpqrcode\qrsplit.php</b> on line <b>71</b><br />
+<br />
+<b>Warning</b>:  Trying to access array offset on value of type int in <b>C:\xampp\htdocs\school_system\app\util\phpqrcode\qrsplit.php</b> on line <b>53</b><br />
+<br />
+<b>Warning</b>:  Trying to access array offset on value of type int in <b>C:\xampp\htdocs\school_system\app\util\phpqrcode\qrsplit.php</b> on line <b>62</b><br />

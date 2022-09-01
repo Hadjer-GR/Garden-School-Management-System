@@ -393,6 +393,54 @@ $name=$this->list_studentModel->get_name_student($student_id,$year_id);
 
 
 
+public function carte(){
+
+  if (($_SERVER['REQUEST_METHOD'] == 'GET') && isset($_SESSION["user_id"])) {
+
+  $id=$_GET["student_id"];
+  $year_id=$_SESSION['id_year_scolaire'];
+  $student_info=$this->list_studentModel->get_student_info($id,$year_id);
+
+
+//4. inscription  date 
+ 
+$today_date=date("Y-m-d");
+
+//7. generate QRCode 
+
+
+require_once "../app/util/phpqrcode/qrlib.php";
+require_once "../app/util/phpqrcode/qrconfig.php";
+
+     
+$text=filter_var($id,FILTER_SANITIZE_STRING);
+$filename= "card1.png";
+
+
+$pngAbsoluteFilePath = APPROOT. '/../public/image/'. $filename;
+ $urlRelativeFilePath ="/public/". $filename;
+
+
+
+QRcode::png($id, $pngAbsoluteFilePath, 'L', 4, 2);
+
+
+$studentt=[$student_info[0]->f_name,$student_info[0]->l_name,$today_date];
+$msg[7]=$studentt;
+
+$all_student= $this->list_studentModel->get_all_student($year_id);
+
+
+$msg[3]=$all_student;
+
+$this->postview=$this->view("admin/list_student","list_student",$msg);
+
+
+  }else{
+    redirect("");
+  }
+
+}
 
 
 

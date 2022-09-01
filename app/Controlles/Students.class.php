@@ -81,6 +81,10 @@ class Students extends Controllers{
          $class_id=$_POST['student_class'];
          $parent_n=$_POST["parent_n"];
          $parent_nbr=$_POST["parent_nbr"];
+         
+        if($class_id == null || $class_id =="" ){
+          redirect("sections");
+        }
        
    //1. insert parent   
 
