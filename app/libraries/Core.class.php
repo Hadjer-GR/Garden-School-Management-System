@@ -19,13 +19,17 @@ class Core{
     $url=$this->get_url();
    
     if(isset($url[0])){
+       // vérfie le document est existe 
+      $this->check_control($url[0]);
+      unset($url[0]); 
 
+      /*
         if(file_exists("../app/controlles/".ucwords($url[0]).".class.php")){
 
            $this->controller=$url[0];
             unset($url[0]);  
          }
-         
+         */
       }   
        // require le controlleur
         require_once "../app/Controlles/".$this->controller.".class.php";
@@ -50,7 +54,25 @@ class Core{
     
 
 
-
+   public function check_control($control){
+      $list_Controller=["Users","Teachers","Students","sections","Showclasses","list_employes","list_students","attandances","materiel"];
+      $nbr=sizeof($list_Controller);
+   
+   for ($i=0; $i <$nbr ; $i++) { 
+        if($control == $list_Controller[$i]){
+           $this->controller=$control;
+   
+   
+        }else{
+             if(ucwords($control)== $list_Controller[$i]){
+           $this->controller=ucwords($control);
+   
+        }
+        }
+   
+   }
+   
+   }
 
 
 
