@@ -333,7 +333,7 @@ if($_SESSION["type"]=="admin"){
     </div>
    
     <div class="" >
-        <h4 class="eventtitle">Salle :</h4>
+        <h4 class="eventtitle">القاعة :</h4>
         <input type="number" required name="salle">
     </div>
    </div>

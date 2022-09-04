@@ -140,7 +140,7 @@ if($_SESSION["type"]=="admin"){
                   <div class="user-input" placeholder="">
                     <label>الاستاذ    المسؤول</label>
                    <select name="teacher_class"> 
-                    <option value="0" <?php if($msg[1]->teacher_id==0){echo"selected";} ?>> ليس بعد</option>
+                    <option value="1" <?php if($msg[1]->teacher_id==1){echo"selected";} ?>> ليس بعد</option>
 
 
                     <?php 
