@@ -158,7 +158,7 @@ var ctx=document.getElementById("lineChart");
     }]
   };
   const config_polar = {
-    type: 'polarArea',
+    type: 'doughnut',
     data: data_polar,
     options: {
       title: {
@@ -173,6 +173,12 @@ var ctx=document.getElementById("lineChart");
     config_polar
   );
 
+  /*
+  *
+  *
+  * 
+  * */
+ 
         </script>
 </section>
  

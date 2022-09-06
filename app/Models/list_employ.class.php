@@ -12,7 +12,7 @@ class list_employ{
  private $delete_employ='update '.DB_NAME.'.teacher set work="no" where id=?;';
  private $search_employ='select id,f_name,l_name,job from '.DB_NAME.'.teacher where l_name like ? and work="yes";'; 
  
- private $pay_month="insert into database_aouetef.teacher_month(month_n,year_nbr,teacher_id,year_id)values(?,?,?,?);
+ private $pay_month="insert into  ".DB_NAME.".teacher_month(month_n,year_nbr,teacher_id,year_id)values(?,?,?,?);
  ";
 
  

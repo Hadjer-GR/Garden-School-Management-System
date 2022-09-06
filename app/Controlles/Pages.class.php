@@ -53,6 +53,7 @@ class Pages extends Controllers{
 
  if($total != 0) {
   $msg[2]=(($msg[1]->income)*100)/$total;
+  $spend=(($msg[1]->spending)*100)/$total;
 
   $msg[3]=(($msg[1]->spending_teacher)*100)/$total;
   $msg[4]=(($msg[1]->spending_materiel)*100)/$total;
